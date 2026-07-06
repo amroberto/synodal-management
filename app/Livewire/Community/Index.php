@@ -7,7 +7,6 @@ use App\Models\Community;
 use Flux\Flux;
 use Livewire\WithPagination;
 
-use App\Models\Sector;
 class Index extends Component
 {
     use WithPagination;

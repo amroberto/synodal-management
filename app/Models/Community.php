@@ -3,18 +3,23 @@
 namespace App\Models;
 
 use App\Enums\UnityTypeEnum;
+use App\Models\Leadership;
+use App\Models\Sector;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\Sector;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Community extends Model
 {
+    /** @use HasFactory<\Database\Factories\CommunityFactory> */
+    use HasFactory;
+
     protected $fillable = [
         'corporate_name',
         'fantasy_name',
         'cnpj',
         'unity_type',
-        'sector_id',
         'cep',
         'street',
         'number',
@@ -22,6 +27,7 @@ class Community extends Model
         'neighborhood',
         'city',
         'state',
+        'sector_id',
         'phone',
         'mobile',
         'email',
@@ -35,7 +41,17 @@ class Community extends Model
     ];
 
     /**
-     * [Description for sector]
+     * Relacionamento com as Lideranças através da tabela pivô
+     */
+    public function leaderships(): BelongsToMany
+    {
+        return $this->belongsToMany(Leadership::class, 'community_leaderships')
+                    ->withPivot('id', 'position_id') // Traz o ID da tabela pivô e o cargo junto
+                    ->withTimestamps();
+    }
+
+    /**
+     * [Description for community]
      *
      * @return BelongsTo
      * 

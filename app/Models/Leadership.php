@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Address;
-use App\Models\Position;
 use App\Models\Community;
+use App\Models\Position;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Leadership extends Model
@@ -47,19 +46,6 @@ class Leadership extends Model
     }
 
     /**
-     * [Description for communities]
-     *
-     * @return BelongsToMany
-     * 
-     */
-    public function communities(): BelongsToMany
-    {
-        return $this->belongsToMany(Community::class, 'community_leadership')
-            ->withPivot('position_id')
-            ->withTimestamps();
-    }
-
-    /**
      * [Description for positions]
      *
      * @return BelongsToMany
@@ -79,7 +65,16 @@ class Leadership extends Model
      */
     public function community(): BelongsTo
     {
-        return $this->belongsTo(Community::class);
+        return $this->belongsTo(\App\Models\Community::class);
     }
 
+    /**
+     * Relacionamento inverso: Comunidades que esta liderança faz parte
+     */
+    public function communities(): BelongsToMany
+    {
+        return $this->belongsToMany(Community::class, 'community_leaderships')
+                    ->withPivot('id', 'position_id')
+                    ->withTimestamps();
+    }
 }
