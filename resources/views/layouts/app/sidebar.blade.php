@@ -19,6 +19,14 @@
                     <flux:navlist.item icon="bookmark-slash" :href="route('sectors.index')" :current="request()->routeIs('sectors.*')" wire:navigate>{{ __('Núcleos') }}</flux:navlist.item>
                     <flux:navlist.item icon="building-library" :href="route('communities.index')" :current="request()->routeIs('communities.*')" wire:navigate>{{ __('Comunidades') }}</flux:navlist.item>
                     <flux:navlist.item icon="users" :href="route('leaderships.index')" :current="request()->routeIs('leaderships.*')" wire:navigate>{{ __('Lideranças') }}</flux:navlist.item>
+                    <flux:navlist.item
+                        icon="banknotes"
+                        :href="route('revenue_categories.index')"
+                        :current="request()->routeIs('revenue_categories.*')"
+                        wire:navigate
+                    >
+                        {{ __('Categorias de Receita') }}
+                    </flux:navlist.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

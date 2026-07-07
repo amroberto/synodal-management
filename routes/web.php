@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Position\Edit as PositionEdit;
 use App\Livewire\Position\Index as PositionIndex;
 use App\Livewire\Position\Create as PositionCreate;
+use App\Livewire\RevenueCategory\Edit as RevenueCategoryEdit;
+use App\Livewire\RevenueCategory\Index as RevenueCategoryIndex;
+use App\Livewire\RevenueCategory\Create as RevenueCategoryCreate;
 use App\Livewire\Sector\Edit as SectorEdit;
 use App\Livewire\Sector\Index as SectorIndex;
 use App\Livewire\Sector\Create as SectorCreate;
@@ -50,6 +53,13 @@ Route::middleware(['auth', 'verified'])->prefix('leaderships')->group(function (
     Route::get('/', LeadershipIndex::class)->name('leaderships.index');
     Route::get('/create', LeadershipCreate::class)->name('leaderships.create');
     Route::get('/{leadership}/edit', LeadershipEdit::class)->name('leaderships.edit');
+});
+
+// Route crud RevenueCategory
+Route::middleware(['auth', 'verified'])->prefix('revenue_categories')->group(function () {
+    Route::get('/', RevenueCategoryIndex::class)->name('revenue_categories.index');
+    Route::get('/create', RevenueCategoryCreate::class)->name('revenue_categories.create');
+    Route::get('/{revenue_category}/edit', RevenueCategoryEdit::class)->name('revenue_categories.edit');
 });
 
 require __DIR__.'/settings.php';
