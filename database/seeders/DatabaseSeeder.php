@@ -9,6 +9,7 @@ use Database\Seeders\PositionSeeder;
 use Database\Seeders\CommunitySeeder;
 use Database\Seeders\LeadershipSeeder;
 use Database\Seeders\SectorSeeder;
+use Database\Seeders\AccountPlanSeeder;
 use Database\Seeders\RevenueCategorySeeder;
 
 class DatabaseSeeder extends Seeder
@@ -32,6 +33,7 @@ class DatabaseSeeder extends Seeder
             CommunitySeeder::class,
             LeadershipSeeder::class,
             RevenueCategorySeeder::class,
+            AccountPlanSeeder::class,
         ]);
     }
 }

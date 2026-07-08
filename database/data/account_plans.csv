@@ -1,0 +1,256 @@
+﻿code,description,level,parent_code
+1,A T I V O,1,
+1.1,A T I V O C I R C U L A N T E,2,1
+1.1.01,Disponibilidades,3,1.1
+1.1.01.01,Caixa,4,1.1.01
+1.1.01.02,Bancos Conta Movimento,4,1.1.01
+1.1.01.03,Aplicações Financeiras,4,1.1.01
+1.1.02,Créditos a Receber,3,1.1
+1.1.02.01,Adiantamentos a Fornecedores,4,1.1.02
+1.1.02.02,Adiantamentos a Entidades,4,1.1.02
+1.1.02.03,Adiantamentos a Colaboradores (as),4,1.1.02
+1.1.02.04,Adiantamentos a Departamentos e Pastorais,4,1.1.02
+1.1.02.05,Despesas Antecipadas,4,1.1.02
+1.1.02.06,Outros Adiantamentos/Créditos,4,1.1.02
+1.1.03,Estoque de Materiais,3,1.1
+1.1.03.01,Materiais Próprios/Religiosos,4,1.1.03
+1.1.03.02,Produtos Recebidos em Doação,4,1.1.03
+1.1.03.03,Almoxarifado / Material de Expediente,4,1.1.03
+1.2,A T I V O N Ã O C I R C U L A N T E,2,1
+1.2.01,Realizável a Longo Prazo,3,1.2
+1.2.01.01,Aplicações Financeiras LP,4,1.2.01
+1.2.01.02,Adiantamento a Entidades LP,4,1.2.01
+1.2.01.03,Fundos a Receber,4,1.2.01
+1.2.01.04,Depositos Judiciais,4,1.2.01
+1.2.02,Investimentos,3,1.2
+1.2.02.01,Investimentos Permanentes,4,1.2.02
+1.2.03,Imobilizado,3,1.2
+1.2.03.01,Imóveis/Terrenos,4,1.2.03
+1.2.03.02,(-) Depreciação Acumulada Imóveis,4,1.2.03
+1.2.03.03,Móveis e Utensílios,4,1.2.03
+1.2.03.04,(-) Depreciação Acumulada Móveis e Utensílios,4,1.2.03
+1.2.03.05,Máquinas e Equipamentos,4,1.2.03
+1.2.03.06,(-) Depreciação de Máquinas e Equipamentos,4,1.2.03
+1.2.03.07,Equipamentos de Informática,4,1.2.03
+1.2.03.08,(-) Depreciação Acumulada Equipamentos de Informática,4,1.2.03
+1.2.03.09,Veículos,4,1.2.03
+1.2.03.10,(-) Depreciação Acumulada Veículos,4,1.2.03
+1.2.04,Intangível,3,1.2
+1.2.04.01,Marcas e Patentes,4,1.2.04
+1.2.04.02,Licenças e Softwares,4,1.2.04
+1.2.04.03,(-) Amortização Acumulada,4,1.2.04
+2,P A S S I V O,1,
+2.1,P A S S I V O C I R C U L A N T E,2,2
+2.1.01,Credores em Conta Corrente,3,2.1
+2.1.01.01,Subsistência Ministerial a Pagar,4,2.1.01
+2.1.01.02,Reserva Ministerial a Pagar,4,2.1.01
+2.1.01.03,Salários/Ordenados a Pagar,4,2.1.01
+2.1.01.04,13º Salário a Pagar,4,2.1.01
+2.1.01.05,Férias a Pagar,4,2.1.01
+2.1.01.06,Fornecedores a Pagar,4,2.1.01
+2.1.01.07,Créditos Bancários a Classificar,4,2.1.01
+2.1.01.08,Promoções/Festas/Eventos,4,2.1.01
+2.1.02,Obrigações Fiscais,3,2.1
+2.1.02.01,INSS a Recolher,4,2.1.02
+2.1.02.02,IRRF a Recolher,4,2.1.02
+2.1.02.03,FGTS a Recolher,4,2.1.02
+2.1.02.04,PIS s/Folha a Recolher,4,2.1.02
+2.1.02.05,Outros Impostos a Recolher,4,2.1.02
+2.1.02.06,Contribuição Sindical/Assistencial a Recolher,4,2.1.02
+2.1.03,Ofertas/Doações/Contribuições a Distribuir,3,2.1
+2.1.03.01,Ofertas e Doações Locais a Distribuir,4,2.1.03
+2.1.03.02,Ofertas Sinodais a Distribuir,4,2.1.03
+2.1.03.03,Ofertas Nacionais a Distribuir,4,2.1.03
+2.1.03.04,Campanha Tema do Ano,4,2.1.03
+2.1.03.05,Campanha Vai e Vem,4,2.1.03
+2.1.03.06,Outras Campanhas,4,2.1.03
+2.1.03.07,Contribuições a Repassar,4,2.1.03
+2.1.04,Provisões,3,2.1
+2.1.04.01,Provisão Férias,4,2.1.04
+2.1.04.02,Provisão 13º Salários,4,2.1.04
+2.1.04.03,Provisão Encargos Sociais,4,2.1.04
+2.1.04.04,Provisão para Indenizações Trabalhistas,4,2.1.04
+2.1.05,Empréstimos a Pagar,3,2.1
+2.1.05.01,Fundo de Empréstimos a pagar,4,2.1.05
+2.1.05.02,(-) Fundo de Empréstimos,4,2.1.05
+2.1.05.03,Emprestimos Diversos a Pagar Curto Prazo,4,2.1.05
+2.2,P A S S I V O N Ã O C I R C U L A N T E,2,2
+2.2.01,Exigibilidades a Longo Prazo,3,2.2
+2.2.01.01,Empréstimos e Financiamentos a Pagar LP,4,2.2.01
+2.2.01.02,Fundo Seguridade,4,2.2.01
+2.2.01.03,Fundo de Solidariedade dos Sínodos - FSS,4,2.2.01
+2.2.01.04,Fundo para Troca Veículo,4,2.2.01
+2.2.01.05,Fundo para Investimento Patrimonial,4,2.2.01
+2.2.01.06,Fundo Sede/Casa Pastoral,4,2.2.01
+2.2.01.07,Outros Fundos,4,2.2.01
+2.3,P A T R I M Ô N I O S O C I A L,2,2
+2.3.01,Fundo Patrimonial,3,2.3
+2.3.01.01,Patrimônio Social,4,2.3.01
+2.3.01.02,Superávit (Déficit) Acumulado,4,2.3.01
+3,R E C E I T A S,1,
+3.1,R E C E I T A S O P E R A C I O N A I S,2,3
+3.1.01,Receitas de Contribuições,3,3.1
+3.1.01.01,Contribuições Mensais e Regulares,4,3.1.01
+3.1.01.02,Contribuições Voluntárias e Esporádicas,4,3.1.01
+3.1.02,Receitas de Ofertas,3,3.1
+3.1.02.01,Ofertas Locais,4,3.1.02
+3.1.02.02,Ofertas Sinodais,4,3.1.02
+3.1.02.03,Ofertas Nacionais,4,3.1.02
+3.1.02.04,Outras Ofertas,4,3.1.02
+3.1.03,Receitas de Serviços Eclesiásticos (Grupos de Trabalho),3,3.1
+3.1.03.01,Receitas de Atividade LELUT,4,3.1.03
+3.1.03.02,Receitas de Atividade OASE,4,3.1.03
+3.1.03.03,Receitas de Atividade Juventude,4,3.1.03
+3.1.03.04,Receitas de Atividade Diaconia,4,3.1.03
+3.1.03.05,Receitas de Atividade Encontro de Casais,4,3.1.03
+3.1.03.06,Receitas de Atividade Música,4,3.1.03
+3.1.03.07,Receitas de Atividade Missão Criança,4,3.1.03
+3.1.03.08,Receitas de Atividade Culto Infantil,4,3.1.03
+3.1.03.09,Receitas de Atividade Pessoas com Deficiência,4,3.1.03
+3.1.03.10,Receitas de Atividade Pastoral da Pessoa Idosa,4,3.1.03
+3.1.03.11,Receitas de Atividade Parcerias Ecumênicas,4,3.1.03
+3.1.03.12,Receitas de Atividade CM's Sinodais e Setoriais/Atualização,4,3.1.03
+3.1.03.13,Receitas de Atividade Formação e Edif.de Comunidades,4,3.1.03
+3.1.03.14,Receitas de Atividade de Ensino Confirmatório,4,3.1.03
+3.1.03.15,Receitas de Atividade de Outros Grupos de Missão,4,3.1.03
+3.1.04,Receitas de Promoções/Festas/Eventos,3,3.1
+3.1.04.01,Receitas de Promoções/Festas/Eventos,4,3.1.04
+3.1.05,Receitas de Doações,3,3.1
+3.1.05.01,Doações de Produtos e Materiais,4,3.1.05
+3.1.05.02,Doações de Valores Monetários para Reformas e Investimentos,4,3.1.05
+3.1.05.03,Doações de Valores Monetários para Campanhas Específicas,4,3.1.05
+3.1.05.04,Doações de Legados em Testamento,4,3.1.05
+3.1.05.05,Doações Diversas,4,3.1.05
+3.1.06,Receitas de Convênios e Parceiras,3,3.1
+3.1.06.01,Receitas de Convênios/Parcerias (entre Instituições IECLB),4,3.1.06
+3.1.06.02,Receitas de Convênios/Parcerias (Entidades Públicas),4,3.1.06
+3.1.06.03,Receitas de Auxílio/Projetos,4,3.1.06
+3.1.06.04,Outras Receitas de Convênios e Parcerias,4,3.1.06
+3.1.07,Receitas de Serviços Diversos,3,3.1
+3.1.07.01,Receitas de Administração de Cemitérios,4,3.1.07
+3.1.07.02,Receitas de Atividades Religiosas,4,3.1.07
+3.1.07.03,Receitas de Uso da Marca,4,3.1.07
+3.1.07.04,Receitas de Publicações e Editoriais,4,3.1.07
+3.1.08,Receitas com Contribuições e Dízimos,3,3.1
+3.1.08.01,Contribuições Recebidas das Comunidades,4,3.1.08
+3.1.08.02,Dízimo do Sínodo,4,3.1.08
+3.1.08.03,Contribuições da Sede,4,3.1.08
+3.1.08.04,Fundo de Solidariedade dos Sínodos - FSS,4,3.1.08
+3.1.08.05,Dízimo sobre Receitas do Sínodo,4,3.1.08
+3.1.08.06,Contribuições Exercícios Anteriores,4,3.1.08
+3.1.08.07,Outras Receitas com Contribuições e Dízimos,4,3.1.08
+3.1.09,Receitas Patrimoniais,3,3.1
+3.1.09.01,Variação Ativa de Bens,4,3.1.09
+3.2,O U T R A S R E C E I T A S O P E R A C I O N A I S,2,3
+3.2.01,Receitas Administrativas e Financeiras,3,3.2
+3.2.01.01,Receitas Financeiras,4,3.2.01
+3.2.01.02,Receitas de Aluguéis,4,3.2.01
+3.2.02,Receitas Diversas,3,3.2
+3.2.02.01,Receitas Extraordinárias,4,3.2.02
+3.2.02.02,Mensuração do Trabalho Voluntário,4,3.2.02
+4,D E S P E S A S,1,
+4.1,D E S P E S A S O P E R A C I O N A I S,2,4
+4.1.01,Subsistência,3,4.1
+4.1.01.01,Subsistência Ministerial,4,4.1.01
+4.1.01.02,Ministros/as em Disponibilidade,4,4.1.01
+4.1.01.03,Subsistência PPHM (Período Prático Habilitação Ministério),4,4.1.01
+4.1.02,Outras Despesas Ministeriais,3,4.1
+4.1.02.01,Seguridade Ministerial,4,4.1.02
+4.1.02.02,Motorização / Deslocamento,4,4.1.02
+4.1.02.03,Formação / Capacitação,4,4.1.02
+4.1.02.04,Mudança,4,4.1.02
+4.1.02.05,Aluguel/Condomínio,4,4.1.02
+4.1.02.06,Outras Despesas Ministeriais,4,4.1.02
+4.1.03,Despesas com Serviços Eclesiásticos (setores de trabalhos),3,4.1
+4.1.03.01,Despesas de atividades LELUT,4,4.1.03
+4.1.03.02,Despesas de atividades OASE,4,4.1.03
+4.1.03.03,Despesas de atividades Juventude,4,4.1.03
+4.1.03.04,Despesas de atividades Diaconia,4,4.1.03
+4.1.03.05,Despesas de atividades Encontro de Casais,4,4.1.03
+4.1.03.06,Despesas de atividades Música,4,4.1.03
+4.1.03.07,Despesas de atividades Missão Criança,4,4.1.03
+4.1.03.08,Despesas de atividades Culto Infantil,4,4.1.03
+4.1.03.09,Despesas de atividades Pessoas com Deficiência,4,4.1.03
+4.1.03.10,Despesas de atividades Pastoral da Pessoa Idosa,4,4.1.03
+4.1.03.11,Despesas de atividades Parcerias Ecumênicas,4,4.1.03
+4.1.03.12,Despesas de atividades CM's Sinodais e Setoriais/Atualização,4,4.1.03
+4.1.03.13,Despesas de atividades Formação e Edif.de Comunidades,4,4.1.03
+4.1.03.14,Despesas de atividades de Ensino Confirmatório,4,4.1.03
+4.1.03.15,Despesas de atividades de Outros Grupos de Missão - Ações Diaconais,4,4.1.03
+4.1.03.16,Despesas de Anuidades de Membresia,4,4.1.03
+4.1.04,Despesas com Reuniões e Encontros,3,4.1
+4.1.04.01,Reunião Presbitério,4,4.1.04
+4.1.04.02,Reunião Diretoria,4,4.1.04
+4.1.04.03,Reunião Conselho,4,4.1.04
+4.1.04.04,Reunião Presidentes,4,4.1.04
+4.1.04.05,Reunião Tesoureiros/as,4,4.1.04
+4.1.04.06,Reunião Assistentes,4,4.1.04
+4.1.04.07,Reunião Pastores e Pastoras Sinodais,4,4.1.04
+4.1.04.08,Reunião Concílio da Igreja,4,4.1.04
+4.1.04.09,Assembleias Sinodais,4,4.1.04
+4.1.04.10,Rateio Reuniões Nacionais,4,4.1.04
+4.1.04.11,Dia da Igreja,4,4.1.04
+4.1.04.12,Outras Reuniões,4,4.1.04
+4.1.05,Despesas com Repasses,3,4.1
+4.1.05.01,Repasse das Contribuições para as Paróquias,4,4.1.05
+4.1.05.02,Repasse do Dízimo aos Sínodos,4,4.1.05
+4.1.05.03,Repasse das Contribuição para a Sede,4,4.1.05
+4.1.05.04,Repasse para o Fundo de Solidariedade dos Sínodos - FSS,4,4.1.05
+4.1.05.05,Repasse do Dízimo sobre Receitas do Sínodo,4,4.1.05
+4.1.05.06,Outros Repasses,4,4.1.05
+4.1.06,Despesas Administrativas,3,4.1
+4.1.06.01,"Água, Gás e Esgoto",4,4.1.06
+4.1.06.02,Energia Elétrica,4,4.1.06
+4.1.06.03,Telefone e Internet,4,4.1.06
+4.1.06.04,Material de Escritório/Informática/Fotocópias,4,4.1.06
+4.1.06.05,Material de Limpeza/Copa/Lanches,4,4.1.06
+4.1.06.06,Assinaturas de Jornais e Revistas,4,4.1.06
+4.1.06.07,Combustível e Pedágio,4,4.1.06
+4.1.06.08,Confraternizações/Brindes,4,4.1.06
+4.1.06.09,Correios e Cartórios/Registro,4,4.1.06
+4.1.06.10,Serviços Contábeis,4,4.1.06
+4.1.06.11,Serviços Jurídicos,4,4.1.06
+4.1.06.12,Serviços de Auditoria,4,4.1.06
+4.1.06.13,Serviços de TIC - Tecnologia da Informação e Comunicação,4,4.1.06
+4.1.06.14,Serviços Prestados Pessoa Física,4,4.1.06
+4.1.06.15,Serviços Prestados Pessoa Jurídica,4,4.1.06
+4.1.06.16,Aluguéis,4,4.1.06
+4.1.06.17,Condomínio,4,4.1.06
+4.1.06.18,Taxa de Coleta de Lixo/IPTU,4,4.1.06
+4.1.06.19,Despesas Bancárias Operacionais,4,4.1.06
+4.1.06.20,Despesas com Capacitações Administrativas,4,4.1.06
+4.1.06.21,Outras Despesas Administrativas,4,4.1.06
+4.1.07,Despesas com Pessoal,3,4.1
+4.1.07.01,Salários/Ordenados,4,4.1.07
+4.1.07.02,13º Salário,4,4.1.07
+4.1.07.03,Férias,4,4.1.07
+4.1.07.04,INSS,4,4.1.07
+4.1.07.05,FGTS,4,4.1.07
+4.1.07.06,PIS s/Folha,4,4.1.07
+4.1.07.07,Vale Transporte,4,4.1.07
+4.1.07.08,Plano de Saúde/Assistência Médica e Odontológica,4,4.1.07
+4.1.07.09,Auxilio Alimentação/Refeição,4,4.1.07
+4.1.07.10,Auxílio Creche/Escola/Educação,4,4.1.07
+4.1.07.11,Seguro de Vida,4,4.1.07
+4.1.07.12,Verbas Rescisórias,4,4.1.07
+4.1.08,Despesas Patrimoniais,3,4.1
+4.1.08.01,Manutenção e Reparos Imobilizado,4,4.1.08
+4.1.08.02,Taxas/Tributos/Alvarás Diversos,4,4.1.08
+4.1.08.03,Seguros Patrimoniais,4,4.1.08
+4.1.08.04,Serviços de Jardinagens/Zeladoria/Segurança/Vigilância,4,4.1.08
+4.1.08.05,Fundo para Investimento Patrimonial,4,4.1.08
+4.1.08.06,Veículos - Manutenção/Seguro,4,4.1.08
+4.1.08.07,Fundo Troca de Veículos,4,4.1.08
+4.1.08.08,Depreciação/Amortização,4,4.1.08
+4.1.08.09,Variação Monetária Passiva de Bens,4,4.1.08
+4.1.08.10,Outras Despesas Patrimoniais,4,4.1.08
+4.1.09,Despesas de Promoções/Festas/Eventos,3,4.1
+4.1.09.01,Despesas de Promoções/Festas/Eventos,4,4.1.09
+4.2,D E S P E S A S N Ã O O P E R A C I O N A I S,2,4
+4.2.01,Despesas Financeiras,3,4.2
+4.2.01.01,Despesas Bancárias Não Operacionais,4,4.2.01
+4.2.01.02,Despesas Cambiais/Multa/Juros de Mora,4,4.2.01
+4.2.02,Despesas Diversas,3,4.2
+4.2.02.01,Despesas Extraordinárias,4,4.2.02
+4.2.02.02,Mensuração do Trabalho Voluntário,4,4.2.02
+4.2.02.03,Outras Despesas Não Operacionais,4,4.2.02
