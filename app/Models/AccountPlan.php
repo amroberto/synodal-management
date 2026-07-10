@@ -14,4 +14,9 @@ class AccountPlan extends Model
         'parent_code',
         'active',
     ];
+
+    public function parent()
+    {
+        return $this->belongsTo(AccountPlan::class, 'parent_code', 'code');
+    }
 }

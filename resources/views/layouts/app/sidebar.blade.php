@@ -27,6 +27,14 @@
                     >
                         {{ __('Categorias de Receita') }}
                     </flux:navlist.item>
+                    <flux:navlist.item
+                        icon="book-open"
+                        :href="route('account-plans.index')"
+                        :current="request()->routeIs('account-plans.*')"
+                        wire:navigate
+                    >
+                        {{ __('Plano de Contas') }}
+                    </flux:navlist.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

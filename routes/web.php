@@ -16,6 +16,8 @@ use App\Livewire\Community\Create as CommunityCreate;
 use App\Livewire\Leadership\Edit as LeadershipEdit;
 use App\Livewire\Leadership\Index as LeadershipIndex;
 use App\Livewire\Leadership\Create as LeadershipCreate;
+use App\Livewire\AccountPlan\Index as AccountPlanIndex;
+use App\Livewire\AccountPlan\Show as AccountPlanShow;
 
 Route::get('/', function () {
     return view('welcome');
@@ -61,5 +63,17 @@ Route::middleware(['auth', 'verified'])->prefix('revenue_categories')->group(fun
     Route::get('/create', RevenueCategoryCreate::class)->name('revenue_categories.create');
     Route::get('/{revenue_category}/edit', RevenueCategoryEdit::class)->name('revenue_categories.edit');
 });
+
+Route::prefix('account-plans')
+    ->middleware(['auth'])
+    ->group(function () {
+
+        Route::get('/', AccountPlanIndex::class)
+            ->name('account-plans.index');
+
+        Route::get('/{accountPlan}', AccountPlanShow::class)
+            ->name('account-plans.show');
+
+    });
 
 require __DIR__.'/settings.php';
