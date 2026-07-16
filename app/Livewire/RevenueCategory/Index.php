@@ -10,30 +10,30 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $revenueCategoryId;
+    public $categoryId;
 
     public function edit($id)
     {
-        $this->dispatch('edit-revenue_category', $id);
+        $this->dispatch('edit-revenue-category', $id);
     }
 
     public function delete($id)
     {
-        $this->revenueCategoryId = $id;
-        Flux::modal('delete-revenue_category')->show();
+        $this->categoryId = $id;
+        Flux::modal('delete-revenue-category')->show();
     }
 
     public function deleteRevenueCategory ()
     {
-        RevenueCategory::find($this->revenueCategoryId)->delete();
-        Flux::modal('delete-revenue_category')->close();
-        session()->flash('success', 'Categoria das receitas deletada com sucesso!');
-        $this->redirectRoute('revenue_categories.index', navigate: true);
+        RevenueCategory::find($this->categoryId)->delete();
+        Flux::modal('delete-revenue-category')->close();
+        session()->flash('success', 'Categoria deletada com sucesso!');
+        $this->redirectRoute('revenue-categories.index', navigate: true);
     }
 
     public function render()
     {
-        $revenue_categories = RevenueCategory::orderBy('created_at', 'asc')->paginate(10);
-        return view('livewire.revenue_category.index', ['revenue_categories' => $revenue_categories])->layout('layouts.app');
+        $categories = RevenueCategory::orderBy('created_at', 'asc')->paginate(10);
+        return view('livewire.revenue-category.index', ['categories' => $categories])->layout('layouts.app');
     }
 }

@@ -21,8 +21,8 @@
                     <flux:navlist.item icon="users" :href="route('leaderships.index')" :current="request()->routeIs('leaderships.*')" wire:navigate>{{ __('Lideranças') }}</flux:navlist.item>
                     <flux:navlist.item
                         icon="banknotes"
-                        :href="route('revenue_categories.index')"
-                        :current="request()->routeIs('revenue_categories.*')"
+                        :href="route('revenue-categories.index')"
+                        :current="request()->routeIs('revenue-categories.*')"
                         wire:navigate
                     >
                         {{ __('Categorias de Receita') }}

@@ -2,11 +2,11 @@
     <div class="mb-6">
         <flux:breadcrumbs>
             <flux:breadcrumbs.item href="route('dashboard')">Home</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item>Categoria das Receitas</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item>Categoria das receitas</flux:breadcrumbs.item>
         </flux:breadcrumbs>
     </div>
     
-    <flux:heading size="xl" level="1">{{ __('Listagem das Categorias das Receitas') }}</flux:heading>
+    <flux:heading size="xl" level="1">{{ __('Listagem de Categorias das receitas') }}</flux:heading>
     <flux:separator variant="subtle" class="mb-6 my-4" />
 
     @session('success')
@@ -21,12 +21,12 @@
     </div>
     @endsession('success')
     
-    <flux:modal.trigger name="create-revenue_category">
-        <flux:button variant="primary" icon="plus-circle">{{ __('Criar Categoria das Receitas') }}</flux:button>
+    <flux:modal.trigger name="create-revenue-category">
+        <flux:button variant="primary" icon="plus-circle">{{ __('Criar Categoria') }}</flux:button>
     </flux:modal.trigger>
 
-    <livewire:position.create />
-    <livewire:position.edit />
+    <livewire:revenue-category.create />
+    <livewire:revenue-category.edit />
 
     <table class="table-auto w-full shadow-md rounded-md mt-5">
         <thead>
@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($revenue_categories as $category)
+            @forelse ($categories as $category)
                 <tr class="border-t">
                     <td class="px-4 py-2">{{ $category->id }}</td>
                     <td class="px-4 py-2">{{ $category->name }}</td>
@@ -64,7 +64,7 @@
             @empty
                 <tr>
                     <td colspan="2" class="px-4 py-2 text-center text-gray-500">
-                        {{ __('Nenhuma categoria das receitas encontrada!') }}
+                        {{ __('No revenue category found.') }}
                     </td>
                 </tr>
             @endforelse
@@ -72,14 +72,14 @@
     </table>
 
     <div class="mt-4">
-        {{ $revenue_categories->links() }}
+        {{ $categories->links() }}
     </div>
 
     {{-- Delete Modal --}}
-    <flux:modal name="delete-revenue_category" class="min-w-[22rem]">
+    <flux:modal name="delete-revenue-category" class="min-w-[22rem]">
         <div class="space-y-6">
             <div>
-                <flux:heading size="lg">Deseja realmente apagar esta categoria das receitas?</flux:heading>
+                <flux:heading size="lg">Deseja realmente apagar esta categoria?</flux:heading>
 
                 <flux:text class="mt-2">
                     Você está prestes a excluir este categoria.<br>
@@ -94,7 +94,7 @@
                     <flux:button variant="ghost">Cancelar</flux:button>
                 </flux:modal.close>
 
-                <flux:button type="submit" variant="danger" wire:click="deleteRevenueCategory()">Apagar Categoria das Receitas</flux:button>
+                <flux:button type="submit" variant="danger" wire:click="deleteRevenueCategory()">Apagar Categoria</flux:button>
             </div>
         </div>
     </flux:modal>

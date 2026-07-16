@@ -59,9 +59,9 @@ Route::middleware(['auth', 'verified'])->prefix('leaderships')->group(function (
 
 // Route crud RevenueCategory
 Route::middleware(['auth', 'verified'])->prefix('revenue_categories')->group(function () {
-    Route::get('/', RevenueCategoryIndex::class)->name('revenue_categories.index');
-    Route::get('/create', RevenueCategoryCreate::class)->name('revenue_categories.create');
-    Route::get('/{revenue_category}/edit', RevenueCategoryEdit::class)->name('revenue_categories.edit');
+    Route::get('/', RevenueCategoryIndex::class)->name('revenue-categories.index');
+    Route::get('/create', RevenueCategoryCreate::class)->name('revenue-categories.create');
+    Route::get('/{revenue_category}/edit', RevenueCategoryEdit::class)->name('revenue-categories.edit');
 });
 
 Route::prefix('account-plans')
