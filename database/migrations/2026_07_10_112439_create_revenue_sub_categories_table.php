@@ -13,21 +13,12 @@ return new class extends Migration
     {
         Schema::create('revenue_sub_categories', function (Blueprint $table) {
             $table->id();
-
+            $table->string('name');
             $table->foreignId('revenue_category_id')
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
-
-            $table->foreignId('account_plan_id')
-                ->constrained()
-                ->cascadeOnUpdate()
-                ->restrictOnDelete();
-
-            $table->string('name');
-
             $table->text('description')->nullable();
-
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

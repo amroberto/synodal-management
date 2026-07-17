@@ -28,6 +28,14 @@
                         {{ __('Categorias de Receita') }}
                     </flux:navlist.item>
                     <flux:navlist.item
+                        icon="banknotes"
+                        :href="route('revenue-sub-categories.index')"
+                        :current="request()->routeIs('revenue-sub-categories.*')"
+                        wire:navigate
+                    >
+                        {{ __('Subcategorias de Receita') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item
                         icon="book-open"
                         :href="route('account-plans.index')"
                         :current="request()->routeIs('account-plans.*')"
