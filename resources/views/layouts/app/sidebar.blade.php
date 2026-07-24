@@ -15,6 +15,7 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
+                    <flux:navlist.item icon="building-office" :href="route('synods.edit', 1)" :current="request()->routeIs('synods.*')" wire:navigate>{{ __('Dados do Sínodo') }} </flux:navlist.item>
                     <flux:navlist.item icon="briefcase" :href="route('positions.index')" :current="request()->routeIs('positions.*')" wire:navigate>{{ __('Cargos') }}</flux:navlist.item>
                     <flux:navlist.item icon="bookmark-slash" :href="route('sectors.index')" :current="request()->routeIs('sectors.*')" wire:navigate>{{ __('Núcleos') }}</flux:navlist.item>
                     <flux:navlist.item icon="building-library" :href="route('communities.index')" :current="request()->routeIs('communities.*')" wire:navigate>{{ __('Comunidades') }}</flux:navlist.item>

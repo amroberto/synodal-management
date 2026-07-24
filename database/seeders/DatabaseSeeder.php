@@ -11,6 +11,8 @@ use Database\Seeders\LeadershipSeeder;
 use Database\Seeders\SectorSeeder;
 use Database\Seeders\AccountPlanSeeder;
 use Database\Seeders\RevenueCategorySeeder;
+use Database\Seeders\SynodSeeder;
+use Database\Seeders\RevenueSubCategorySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -34,6 +36,8 @@ class DatabaseSeeder extends Seeder
             LeadershipSeeder::class,
             RevenueCategorySeeder::class,
             AccountPlanSeeder::class,
+            SynodSeeder::class,
+            RevenueSubCategorySeeder::class,
         ]);
     }
 }

@@ -12,6 +12,8 @@ use App\Livewire\RevenueSubCategory\Edit as RevenueSubCategoryEdit;
 use App\Livewire\RevenueSubCategory\Index as RevenueSubCategoryIndex;
 use App\Livewire\RevenueSubCategory\Create as RevenueSubCategoryCreate;
 
+use App\Livewire\Synod\Edit as SynodEdit;
+
 use App\Livewire\Sector\Edit as SectorEdit;
 use App\Livewire\Sector\Index as SectorIndex;
 use App\Livewire\Sector\Create as SectorCreate;
@@ -70,23 +72,20 @@ Route::middleware(['auth', 'verified'])->prefix('revenue-categories')->group(fun
 });
 
 // Route crud RevenueSubCategory
-
 Route::middleware(['auth', 'verified'])->prefix('revenue-sub-categories')->group(function () {
         Route::get('/', RevenueSubCategoryIndex::class)->name('revenue-sub-categories.index');
         Route::get('/create', RevenueSubCategoryCreate::class)->name('revenue-sub-categories.create');
         Route::get('/{revenueSubCategory}/edit', RevenueSubCategoryEdit::class)->name('revenue-sub-categories.edit');
     });
 
-Route::prefix('account-plans')
-    ->middleware(['auth'])
-    ->group(function () {
-
-        Route::get('/', AccountPlanIndex::class)
-            ->name('account-plans.index');
-
-        Route::get('/{accountPlan}', AccountPlanShow::class)
-            ->name('account-plans.show');
-
+Route::prefix('account-plans')->middleware(['auth'])->group(function () {
+        Route::get('/', AccountPlanIndex::class)->name('account-plans.index');
+        Route::get('/{accountPlan}', AccountPlanShow::class)->name('account-plans.show');
     });
+
+// Route to Edit Synod
+Route::middleware(['auth', 'verified'])->prefix('synods')->group(function() {
+    Route::get('/{synod}/edit', SynodEdit::class)->name('synods.edit');
+});
 
 require __DIR__.'/settings.php';
