@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum OfferInstance: string
+enum OfferInstanceEnum: string
 {
     case LOCAL = 'local';
     case SINODAL = 'sinodal';
