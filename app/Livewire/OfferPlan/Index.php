@@ -12,9 +12,9 @@ class Index extends Component
 
     public string $search = '';
 
-    public ?int $month = null;
+    public int $year;
 
-    public ?int $year = null;
+    public ?int $month = null;
 
     public ?int $offerPlanId = null;
 
@@ -23,6 +23,11 @@ class Index extends Component
         'month'  => ['except' => null],
         'year'   => ['except' => null],
     ];
+
+    public function mount(): void
+    {
+        $this->year = now()->year;
+    }
 
     public function updatingSearch(): void
     {

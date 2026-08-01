@@ -49,7 +49,7 @@ class Index extends Component
                         ->where('name', 'like', "%{$this->search}%")
                         ->orWhere('description', 'like', "%{$this->search}%");
                 })
-                ->orderBy('name')
+                ->orderBy('id')
                 ->paginate(10),
         ]);
     }

@@ -13,6 +13,7 @@ use Database\Seeders\AccountPlanSeeder;
 use Database\Seeders\RevenueCategorySeeder;
 use Database\Seeders\SynodSeeder;
 use Database\Seeders\RevenueSubCategorySeeder;
+use Database\Seeders\OfferDestinationSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
             AccountPlanSeeder::class,
             SynodSeeder::class,
             RevenueSubCategorySeeder::class,
+            OfferDestinationSeeder::class,
         ]);
     }
 }
