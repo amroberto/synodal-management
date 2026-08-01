@@ -18,6 +18,9 @@ class OfferDestination extends Model
         'active' => 'boolean',
     ];
 
+    /**
+     * Plano de ofertas.
+     */
     public function offerPlans(): HasMany
     {
         return $this->hasMany(OfferPlan::class);

@@ -43,13 +43,19 @@ class Form extends Component
     {
         $this->offerDestination = $offerDestination;
 
-        if (! $offerDestination) {
+
+        if (! $this->offerDestination?->exists) {
             return;
         }
 
-        $this->name = $offerDestination->name;
-        $this->description = $offerDestination->description;
-        $this->active = $offerDestination->active;
+
+        $this->name = $this->offerDestination->name ?? '';
+
+        $this->description =
+            $this->offerDestination->description;
+
+        $this->active =
+            $this->offerDestination->active ?? true;
     }
 
     public function save()

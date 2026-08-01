@@ -18,7 +18,7 @@ enum OfferInstanceEnum: string
             self::LOCAL => 'Local',
             self::SINODAL => 'Sinodal',
             self::NATIONAL => 'Nacional',
-            self::ESPECIAL => 'Especial';
+            self::ESPECIAL => 'Especial',
         };
     }
 

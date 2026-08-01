@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('offer_plans', function (Blueprint $table) {
             $table->id();
+            $table->date('offer_date');
+            $table->string('liturgical_date');
+            $table->string('offer_instance');
+            $table->foreignId('offer_destination_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+
+            $table->boolean('active')->default(true);
             $table->timestamps();
+
+            $table->unique(['offer_date', 'offer_instance']);
         });
     }
 

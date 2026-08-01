@@ -30,6 +30,11 @@ use App\Livewire\OfferDestination\Index as OfferDestinationIndex;
 use App\Livewire\OfferDestination\Create as OfferDestinationCreate;
 use App\Livewire\OfferDestination\Edit as OfferDestinationEdit;
 
+use App\Livewire\OfferPlan\Index as OfferPlanIndex;
+use App\Livewire\OfferPlan\Show as OfferPlanShow;
+use App\Livewire\OfferPlan\Create as OfferPlanCreate;
+use App\Livewire\OfferPlan\Edit as OfferPlanEdit;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -93,18 +98,18 @@ Route::middleware(['auth', 'verified'])->prefix('synods')->group(function() {
 });
 
 // CRUD OfferDestination
-Route::middleware(['auth', 'verified'])
-    ->prefix('offer-destinations')
-    ->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('offer-destinations')->group(function () {
+        Route::get('/', OfferDestinationIndex::class)->name('offer-destinations.index');
+        Route::get('/create', OfferDestinationCreate::class)->name('offer-destinations.create');
+        Route::get('/{offerDestination}/edit', OfferDestinationEdit::class)->name('offer-destinations.edit');
+    });
 
-        Route::get('/', OfferDestinationIndex::class)
-            ->name('offer-destinations.index');
-
-        Route::get('/create', OfferDestinationCreate::class)
-            ->name('offer-destinations.create');
-
-        Route::get('/{offerDestination}/edit', OfferDestinationEdit::class)
-            ->name('offer-destinations.edit');
+// CRUD OfferPlan
+Route::middleware(['auth', 'verified'])->prefix('offer-plans')->group(function () {
+        Route::get('/', OfferPlanIndex::class)->name('offer-plans.index');
+        Route::get('/create', OfferPlanCreate::class)->name('offer-plans.create');
+        Route::get('/{offerPlan}', OfferPlanShow::class)->name('offer-plans.show');
+        Route::get('/{offerPlan}/edit', OfferPlanEdit::class)->name('offer-plans.edit');
     });
 
 require __DIR__.'/settings.php';

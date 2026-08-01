@@ -44,6 +44,13 @@
                         {{ __('Destinação das Ofertas') }}
                     </flux:navlist.item>
                     <flux:navlist.item
+                        icon="calendar-days"
+                        :href="route('offer-plans.index')"
+                        :current="request()->routeIs('offer-plans.*')"
+                    >
+                        {{ __('Plano de Ofertas') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item
                         icon="book-open"
                         :href="route('account-plans.index')"
                         :current="request()->routeIs('account-plans.*')"
