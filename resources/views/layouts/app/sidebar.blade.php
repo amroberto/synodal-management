@@ -37,6 +37,13 @@
                         {{ __('Subcategorias de Receita') }}
                     </flux:navlist.item>
                     <flux:navlist.item
+                        icon="gift"
+                        :href="route('offer-destinations.index')"
+                        :current="request()->routeIs('offer-destinations.*')"
+                    >
+                        {{ __('Destinação das Ofertas') }}
+                    </flux:navlist.item>
+                    <flux:navlist.item
                         icon="book-open"
                         :href="route('account-plans.index')"
                         :current="request()->routeIs('account-plans.*')"

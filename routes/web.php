@@ -26,6 +26,10 @@ use App\Livewire\Leadership\Create as LeadershipCreate;
 use App\Livewire\AccountPlan\Index as AccountPlanIndex;
 use App\Livewire\AccountPlan\Show as AccountPlanShow;
 
+use App\Livewire\OfferDestination\Index as OfferDestinationIndex;
+use App\Livewire\OfferDestination\Create as OfferDestinationCreate;
+use App\Livewire\OfferDestination\Edit as OfferDestinationEdit;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -87,5 +91,20 @@ Route::prefix('account-plans')->middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'verified'])->prefix('synods')->group(function() {
     Route::get('/{synod}/edit', SynodEdit::class)->name('synods.edit');
 });
+
+// CRUD OfferDestination
+Route::middleware(['auth', 'verified'])
+    ->prefix('offer-destinations')
+    ->group(function () {
+
+        Route::get('/', OfferDestinationIndex::class)
+            ->name('offer-destinations.index');
+
+        Route::get('/create', OfferDestinationCreate::class)
+            ->name('offer-destinations.create');
+
+        Route::get('/{offerDestination}/edit', OfferDestinationEdit::class)
+            ->name('offer-destinations.edit');
+    });
 
 require __DIR__.'/settings.php';

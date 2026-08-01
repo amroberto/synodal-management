@@ -59,7 +59,6 @@
                     <th class="px-4 py-2">{{ __('ID') }}</th>
                     <th class="px-4 py-2">{{ __('Nome') }}</th>
                     <th class="px-4 py-2">{{ __('Cidade/UF') }}</th>
-                    <th class="px-4 py-2">{{ __('Telefone') }}</th>
                     <th class="px-4 py-2">{{ __('Celular') }}</th>
                     <th class="px-4 py-2">{{ __('E-mail') }}</th>
                     <th class="px-4 py-2">{{ __('Ações') }}</th>
@@ -72,7 +71,6 @@
                         <td class="px-4 py-2">{{ $leadership->id }}</td>
                         <td class="px-4 py-2">{{ $leadership->name }}</td>
                         <td class="px-4 py-2">{{ $leadership->city }}/{{ $leadership->state }}</td>
-                        <td class="px-4 py-2">{{ \App\Helpers\BrazilianFormatter::formatPhoneOrMobile($leadership->phone) }}</td>
                         <td class="px-4 py-2">{{ \App\Helpers\BrazilianFormatter::formatPhoneOrMobile($leadership->mobile) }}</td>
                         <td class="px-4 py-2">{{ $leadership->email }}</td>
                         <td class="px-4 py-2 space-x-2">
