@@ -11,55 +11,136 @@
             </flux:sidebar.header>
 
             <flux:sidebar.nav>
-                <flux:sidebar.group :heading="__('Platform')" class="grid">
-                    <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
-                    </flux:sidebar.item>
-                    <flux:navlist.item icon="building-office" :href="route('synods.edit', 1)" :current="request()->routeIs('synods.*')" wire:navigate>{{ __('Dados do Sínodo') }} </flux:navlist.item>
-                    <flux:navlist.item icon="briefcase" :href="route('positions.index')" :current="request()->routeIs('positions.*')" wire:navigate>{{ __('Cargos') }}</flux:navlist.item>
-                    <flux:navlist.item icon="bookmark-slash" :href="route('sectors.index')" :current="request()->routeIs('sectors.*')" wire:navigate>{{ __('Núcleos') }}</flux:navlist.item>
-                    <flux:navlist.item icon="building-library" :href="route('communities.index')" :current="request()->routeIs('communities.*')" wire:navigate>{{ __('Comunidades') }}</flux:navlist.item>
-                    <flux:navlist.item icon="users" :href="route('leaderships.index')" :current="request()->routeIs('leaderships.*')" wire:navigate>{{ __('Lideranças') }}</flux:navlist.item>
-                    <flux:navlist.item
-                        icon="banknotes"
-                        :href="route('revenue-categories.index')"
-                        :current="request()->routeIs('revenue-categories.*')"
-                        wire:navigate
-                    >
-                        {{ __('Categorias de Receita') }}
-                    </flux:navlist.item>
-                    <flux:navlist.item
-                        icon="banknotes"
-                        :href="route('revenue-sub-categories.index')"
-                        :current="request()->routeIs('revenue-sub-categories.*')"
-                        wire:navigate
-                    >
-                        {{ __('Subcategorias de Receita') }}
-                    </flux:navlist.item>
-                    <flux:navlist.item
-                        icon="gift"
-                        :href="route('offer-destinations.index')"
-                        :current="request()->routeIs('offer-destinations.*')"
-                    >
-                        {{ __('Destinação das Ofertas') }}
-                    </flux:navlist.item>
-                    <flux:navlist.item
-                        icon="calendar-days"
-                        :href="route('offer-plans.index')"
-                        :current="request()->routeIs('offer-plans.*')"
-                    >
-                        {{ __('Plano de Ofertas') }}
-                    </flux:navlist.item>
-                    <flux:navlist.item
-                        icon="book-open"
-                        :href="route('account-plans.index')"
-                        :current="request()->routeIs('account-plans.*')"
-                        wire:navigate
-                    >
-                        {{ __('Plano de Contas') }}
-                    </flux:navlist.item>
-                </flux:sidebar.group>
-            </flux:sidebar.nav>
+
+    {{-- Dashboard --}}
+    <flux:sidebar.group :heading="__('Início')" class="grid">
+
+        <flux:sidebar.item
+            icon="home"
+            :href="route('dashboard')"
+            :current="request()->routeIs('dashboard')"
+            wire:navigate
+        >
+            Dashboard
+        </flux:sidebar.item>
+
+            </flux:sidebar.group>
+
+
+            {{-- Administração --}}
+            <flux:sidebar.group :heading="__('Administração')" class="grid">
+
+                <flux:navlist.item
+                    icon="building-office"
+                    :href="route('synods.edit', 1)"
+                    :current="request()->routeIs('synods.*')"
+                    wire:navigate
+                >
+                    Dados do Sínodo
+                </flux:navlist.item>
+
+                <flux:navlist.item
+                    icon="book-open"
+                    :href="route('account-plans.index')"
+                    :current="request()->routeIs('account-plans.*')"
+                    wire:navigate
+                >
+                    Plano de Contas
+                </flux:navlist.item>
+
+            </flux:sidebar.group>
+
+
+            {{-- Cadastros --}}
+            <flux:sidebar.group :heading="__('Cadastros')" class="grid">
+
+                <flux:navlist.item
+                    icon="briefcase"
+                    :href="route('positions.index')"
+                    :current="request()->routeIs('positions.*')"
+                    wire:navigate
+                >
+                    Cargos
+                </flux:navlist.item>
+
+                <flux:navlist.item
+                    icon="map"
+                    :href="route('sectors.index')"
+                    :current="request()->routeIs('sectors.*')"
+                    wire:navigate
+                >
+                    Núcleos
+                </flux:navlist.item>
+
+                <flux:navlist.item
+                    icon="building-library"
+                    :href="route('communities.index')"
+                    :current="request()->routeIs('communities.*')"
+                    wire:navigate
+                >
+                    Comunidades
+                </flux:navlist.item>
+
+                <flux:navlist.item
+                    icon="users"
+                    :href="route('leaderships.index')"
+                    :current="request()->routeIs('leaderships.*')"
+                    wire:navigate
+                >
+                    Lideranças
+                </flux:navlist.item>
+
+            </flux:sidebar.group>
+
+
+            {{-- Financeiro --}}
+            <flux:sidebar.group :heading="__('Financeiro')" class="grid">
+
+                <flux:navlist.item
+                    icon="folder"
+                    :href="route('revenue-categories.index')"
+                    :current="request()->routeIs('revenue-categories.*')"
+                    wire:navigate
+                >
+                    Categorias de Receita
+                </flux:navlist.item>
+
+                <flux:navlist.item
+                    icon="folder-open"
+                    :href="route('revenue-sub-categories.index')"
+                    :current="request()->routeIs('revenue-sub-categories.*')"
+                    wire:navigate
+                >
+                    Subcategorias de Receita
+                </flux:navlist.item>
+
+                <flux:navlist.item
+                    icon="gift"
+                    :href="route('offer-destinations.index')"
+                    :current="request()->routeIs('offer-destinations.*')"
+                    wire:navigate
+                >
+                    Destinação das Ofertas
+                </flux:navlist.item>
+
+                <flux:navlist.item
+                    icon="calendar-days"
+                    :href="route('offer-plans.index')"
+                    :current="request()->routeIs('offer-plans.*')"
+                    wire:navigate
+                >
+                    Plano de Ofertas
+                </flux:navlist.item>
+
+                {{-- Próximos módulos --}}
+                {{-- Receitas --}}
+                {{-- Repasses --}}
+                {{-- Pagamentos --}}
+                {{-- Recibos --}}
+
+            </flux:sidebar.group>
+
+        </flux:sidebar.nav>
 
             <flux:spacer />
 
