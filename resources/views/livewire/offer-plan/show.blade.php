@@ -116,13 +116,15 @@
             @endif
 
             <div>
-                <dt class="font-semibold text-gray-700 dark:text-gray-300">
+                <dt class="text-sm text-gray-500">
                     Plano de Contas
                 </dt>
 
-                <dd class="text-gray-900 dark:text-gray-100">
+                <flux:text>
                     {{ $offerPlan->accountPlan?->full_description ?? '-' }}
-                </dd>
+                </flux:text>
+                    
+                
             </div>
             
 
@@ -137,13 +139,13 @@
                 @if($offerPlan->active)
 
                     <span class="text-green-600 font-semibold">
-                        Sim
+                        Ativo
                     </span>
 
                 @else
 
                     <span class="text-red-600 font-semibold">
-                        Não
+                        In ativo
                     </span>
 
                 @endif
