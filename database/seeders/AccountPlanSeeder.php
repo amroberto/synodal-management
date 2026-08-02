@@ -17,8 +17,6 @@ class AccountPlanSeeder extends Seeder
 
         $rows = $this->importCsv($path);
 
-        AccountPlan::truncate();
-
         foreach ($rows as $row) {
 
             AccountPlan::create([

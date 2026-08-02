@@ -20,7 +20,9 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
-
+            $table->foreignId('account_plan_id')
+                ->constrained()
+                ->restrictOnDelete();
             $table->boolean('active')->default(true);
             $table->timestamps();
 

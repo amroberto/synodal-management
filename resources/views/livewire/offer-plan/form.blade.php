@@ -2,64 +2,51 @@
 
     <form wire:submit.prevent="save" class="space-y-6">
 
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <flux:input
+                type="date"
+                label="Data da Oferta"
+                wire:model.defer="offer_date"
+                required
+            />
 
+            <flux:select
+                label="Instância"
+                wire:model.defer="offer_instance"
+                required
+            >
 
-            {{-- Data --}}
-            <div>
-                <flux:input
-                    label="Data da Oferta"
-                    type="date"
-                    wire:model.defer="offer_date"
-                />
-            </div>
+                <option value="">
+                    Selecione...
+                </option>
 
+                @foreach($instances as $value => $label)
 
-            {{-- Instância --}}
-            <div class="md:col-span-2">
-
-                <flux:select
-                    label="Instância"
-                    wire:model.defer="offer_instance"
-                >
-
-                    <option value="">
-                        Selecione
+                    <option value="{{ $value }}">
+                        {{ $label }}
                     </option>
 
+                @endforeach
 
-                    @foreach($instances as $instance)
-
-                        <option value="{{ $instance->value }}">
-                            {{ $instance->label() }}
-                        </option>
-
-                    @endforeach
-
-                </flux:select>
-
-            </div>
-
+            </flux:select>
 
         </div>
 
 
-
-        {{-- Destinação --}}
-        <div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             <flux:select
                 label="Destinação da Oferta"
                 wire:model.defer="offer_destination_id"
+                required
             >
 
                 <option value="">
-                    Selecione
+                    Selecione...
                 </option>
 
-
-                @foreach($destinations as $destination)
+                @foreach($offerDestinations as $destination)
 
                     <option value="{{ $destination->id }}">
                         {{ $destination->name }}
@@ -67,27 +54,39 @@
 
                 @endforeach
 
+            </flux:select>
+
+
+            <flux:select
+                label="Plano de Contas"
+                wire:model.defer="account_plan_id"
+            >
+
+                <option value="">
+                    Selecione...
+                </option>
+
+                @foreach($accountPlans as $account)
+
+                    <option value="{{ $account->id }}">
+                        {{ $account->code }} - {{ $account->description }}
+                    </option>
+
+                @endforeach
 
             </flux:select>
 
         </div>
 
 
-
-        {{-- Data Litúrgica --}}
-        <div>
-
-            <flux:input
-                label="Data Litúrgica"
-                wire:model.defer="liturgical_date"
-                placeholder="Ex.: 7º Domingo após Pentecostes"
-            />
-
-        </div>
+        <flux:input
+            label="Data Litúrgica"
+            wire:model.defer="liturgical_date"
+            placeholder="Ex.: 3º Domingo após Pentecostes"
+            required
+        />
 
 
-
-        {{-- Ativo --}}
         <div class="flex items-center">
 
             <flux:checkbox
@@ -99,16 +98,16 @@
                 for="active"
                 class="ml-2"
             >
-                Oferta ativa
+                Plano de Oferta ativo
             </label>
 
         </div>
 
 
+        <flux:separator variant="subtle"/>
 
-        {{-- Botões --}}
-        <div class="flex justify-end gap-3 mt-6">
 
+        <div class="flex justify-end gap-3">
 
             <flux:button
                 type="button"
@@ -118,7 +117,6 @@
                 Cancelar
             </flux:button>
 
-
             <flux:button
                 type="submit"
                 variant="primary"
@@ -126,9 +124,7 @@
                 Salvar
             </flux:button>
 
-
         </div>
-
 
     </form>
 

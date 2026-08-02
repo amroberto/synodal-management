@@ -12,7 +12,10 @@ class Show extends Component
 
     public function mount(OfferPlan $offerPlan): void
     {
-        $this->offerPlan = $offerPlan->load('offerDestination');
+        $this->offerPlan = $offerPlan->load([
+            'offerDestination',
+            'accountPlan',
+        ]);
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\OfferInstanceEnum;
+use App\Models\AccountPlan;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +15,7 @@ class OfferPlan extends Model
         'liturgical_date',
         'offer_instance',
         'offer_destination_id',
+        'account_plan_id',
         'active',
     ];
 
@@ -35,6 +37,11 @@ class OfferPlan extends Model
             OfferDestination::class,
             'offer_destination_id'
         );
+    }
+
+    public function accountPlan(): BelongsTo
+    {
+        return $this->belongsTo(AccountPlan::class);
     }
 
     /*

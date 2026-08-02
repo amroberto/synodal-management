@@ -115,7 +115,16 @@
 
             @endif
 
+            <div>
+                <dt class="font-semibold text-gray-700 dark:text-gray-300">
+                    Plano de Contas
+                </dt>
 
+                <dd class="text-gray-900 dark:text-gray-100">
+                    {{ $offerPlan->accountPlan?->full_description ?? '-' }}
+                </dd>
+            </div>
+            
 
             {{-- Status --}}
             <div>
