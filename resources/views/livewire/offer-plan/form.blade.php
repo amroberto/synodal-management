@@ -2,8 +2,11 @@
 
     <form wire:submit.prevent="save" class="space-y-6">
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {{-- DIV para Data da Oferta, Instância e centro de custos --}}
 
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6"> 
+
+            
             <flux:input
                 type="date"
                 label="Data da Oferta"
@@ -31,8 +34,27 @@
 
             </flux:select>
 
-        </div>
+            <flux:select
+                label="Centro de Custos"
+                wire:model.defer="cost_center_id"
+                required
+            >
 
+                <option value="">
+                    Selecione...
+                </option>
+
+                @foreach($costCenters as $costCenter)
+
+                    <option value="{{ $costCenter->id }}">
+                        {{ $costCenter->code }} - {{ $costCenter->name }}
+                    </option>
+
+                @endforeach
+
+            </flux:select>
+
+        </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 

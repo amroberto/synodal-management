@@ -44,7 +44,16 @@
                     <td class="px-4 py-2">{{ $costCenter->id }}</td>
                     <td class="px-4 py-2">{{ $costCenter->code }}</td>
                     <td class="px-4 py-2">{{ $costCenter->name }}</td>
-                    <td class="px-4 py-2">{{ $costCenter->active ? 'Sim' : 'Não' }}</td>
+                    <td class="px-4 py-2">
+                        @if($costCenter->active)
+                            <span class="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
+                                    Sim
+                                </span>
+                            @else
+                                <span class="inline-flex items-center rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
+                                    Não
+                                </span>
+                            @endif</td>
                     <td class="px-4 py-2 space-x-2">
                             <flux:button
                                 size="sm"

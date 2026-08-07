@@ -16,4 +16,9 @@ class CostCenter extends Model
     protected $casts = [
         'active' => 'boolean',
     ];
+
+    public function getFullDescriptionAttribute(): string
+    {
+        return "{$this->code} - {$this->name}";
+    }
 }

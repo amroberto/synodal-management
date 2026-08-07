@@ -88,6 +88,16 @@
                     {{ $offerPlan->accountPlan?->full_description ?? '-' }}
                 </flux:text>                                 
             </div>
+
+            {{-- Centro de Custos --}}
+            <div>
+                <flux:text class="text-sm text-gray-500">
+                    Centro de Custos
+                </flux:text>
+                <flux:text>
+                    {{ $offerPlan->costCenter?->full_description ?? '-' }}
+                </flux:text>
+            </div>
             
             {{-- Status --}}
             <div>

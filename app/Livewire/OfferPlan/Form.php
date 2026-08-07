@@ -4,6 +4,7 @@ namespace App\Livewire\OfferPlan;
 
 use App\Enums\OfferInstanceEnum;
 use App\Models\AccountPlan;
+use App\Models\CostCenter;
 use App\Models\OfferDestination;
 use App\Models\OfferPlan;
 use Livewire\Component;
@@ -22,6 +23,10 @@ class Form extends Component
 
     public ?int $account_plan_id = null;
 
+    public ?int $offer_plan_id = null;
+
+    public ?int $cost_center_id = null;
+
     public bool $active = true;
 
     /**
@@ -30,6 +35,8 @@ class Form extends Component
     public $offerDestinations = [];
 
     public $accountPlans = [];
+
+    public $costCenters = [];
 
     public array $instances = [];
 
@@ -46,6 +53,8 @@ class Form extends Component
             'offer_destination_id' => ['required', 'exists:offer_destinations,id'],
 
             'account_plan_id' => ['nullable', 'exists:account_plans,id'],
+
+            'offer_plan_id' => ['nullable', 'exists:offer_plans,id'],
 
             'active' => ['boolean'],
 
@@ -70,6 +79,10 @@ class Form extends Component
 
         $this->instances = OfferInstanceEnum::options();
 
+        $this->costCenters = CostCenter::where('active', true)
+            ->orderBy('code')
+            ->get();
+
         /*
         |--------------------------------------------------------------------------
         | Edit
@@ -90,6 +103,8 @@ class Form extends Component
 
         $this->account_plan_id = $this->offerPlan->account_plan_id;
 
+        $this->cost_center_id = $this->offerPlan->cost_center_id;
+
         $this->active = $this->offerPlan->active;
     }
 
@@ -108,6 +123,8 @@ class Form extends Component
             'offer_destination_id' => $this->offer_destination_id,
 
             'account_plan_id' => $this->account_plan_id,
+
+            'cost_center_id' => $this->cost_center_id,
 
             'active' => $this->active,
 
