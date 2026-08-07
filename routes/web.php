@@ -12,6 +12,10 @@ use App\Livewire\RevenueSubCategory\Edit as RevenueSubCategoryEdit;
 use App\Livewire\RevenueSubCategory\Index as RevenueSubCategoryIndex;
 use App\Livewire\RevenueSubCategory\Create as RevenueSubCategoryCreate;
 
+use App\Livewire\CostCenter\Edit as CostCenterEdit;
+use App\Livewire\CostCenter\Index as CostCenterIndex;
+use App\Livewire\CostCenter\Create as CostCenterCreate;
+
 use App\Livewire\Synod\Edit as SynodEdit;
 
 use App\Livewire\Sector\Edit as SectorEdit;
@@ -110,6 +114,13 @@ Route::middleware(['auth', 'verified'])->prefix('offer-plans')->group(function (
         Route::get('/create', OfferPlanCreate::class)->name('offer-plans.create');
         Route::get('/{offerPlan}', OfferPlanShow::class)->name('offer-plans.show');
         Route::get('/{offerPlan}/edit', OfferPlanEdit::class)->name('offer-plans.edit');
+    });
+
+// CRUD CostCenter
+Route::middleware(['auth', 'verified'])->prefix('cost-centers')->group(function () {
+        Route::get('/', CostCenterIndex::class)->name('cost-centers.index');
+        Route::get('/create', CostCenterCreate::class)->name('cost-centers.create');
+        Route::get('/{costCenter}/edit', CostCenterEdit::class)->name('cost-centers.edit');
     });
 
 require __DIR__.'/settings.php';

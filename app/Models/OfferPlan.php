@@ -16,6 +16,7 @@ class OfferPlan extends Model
         'offer_instance',
         'offer_destination_id',
         'account_plan_id',
+        'cost_center_id',
         'active',
     ];
 
@@ -30,6 +31,11 @@ class OfferPlan extends Model
     | Relationships
     |--------------------------------------------------------------------------
     */
+
+    public function costCenter(): BelongsTo
+    {
+        return $this->belongsTo(CostCenter::class);
+    }
 
     public function offerDestination(): BelongsTo
     {

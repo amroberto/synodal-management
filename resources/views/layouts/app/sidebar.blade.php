@@ -98,6 +98,15 @@
 
                 <flux:navlist.item
                     icon="folder"
+                    :href="route('cost-centers.index')"
+                    :current="request()->routeIs('cost-centers.*')"
+                    wire:navigate
+                >
+                    Centros de Custos
+                </flux:navlist.item>
+                
+                <flux:navlist.item
+                    icon="folder"
                     :href="route('revenue-categories.index')"
                     :current="request()->routeIs('revenue-categories.*')"
                     wire:navigate

@@ -24,6 +24,10 @@ return new class extends Migration
                 ->constrained()
                 ->restrictOnDelete();
             $table->boolean('active')->default(true);
+            $table->foreignId('cost_center_id')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
             $table->timestamps();
 
             $table->unique(['offer_date', 'offer_instance']);
