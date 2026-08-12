@@ -4,14 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Position\Edit as PositionEdit;
 use App\Livewire\Position\Index as PositionIndex;
 use App\Livewire\Position\Create as PositionCreate;
-use App\Livewire\RevenueCategory\Edit as RevenueCategoryEdit;
-use App\Livewire\RevenueCategory\Index as RevenueCategoryIndex;
-use App\Livewire\RevenueCategory\Create as RevenueCategoryCreate;
-
-use App\Livewire\RevenueSubCategory\Edit as RevenueSubCategoryEdit;
-use App\Livewire\RevenueSubCategory\Index as RevenueSubCategoryIndex;
-use App\Livewire\RevenueSubCategory\Create as RevenueSubCategoryCreate;
-
 use App\Livewire\CostCenter\Edit as CostCenterEdit;
 use App\Livewire\CostCenter\Index as CostCenterIndex;
 use App\Livewire\CostCenter\Create as CostCenterCreate;
@@ -76,20 +68,6 @@ Route::middleware(['auth', 'verified'])->prefix('leaderships')->group(function (
     Route::get('/create', LeadershipCreate::class)->name('leaderships.create');
     Route::get('/{leadership}/edit', LeadershipEdit::class)->name('leaderships.edit');
 });
-
-// Route crud RevenueCategory
-Route::middleware(['auth', 'verified'])->prefix('revenue-categories')->group(function () {
-    Route::get('/', RevenueCategoryIndex::class)->name('revenue-categories.index');
-    Route::get('/create', RevenueCategoryCreate::class)->name('revenue-categories.create');
-    Route::get('/{revenue_category}/edit', RevenueCategoryEdit::class)->name('revenue-categories.edit');
-});
-
-// Route crud RevenueSubCategory
-Route::middleware(['auth', 'verified'])->prefix('revenue-sub-categories')->group(function () {
-        Route::get('/', RevenueSubCategoryIndex::class)->name('revenue-sub-categories.index');
-        Route::get('/create', RevenueSubCategoryCreate::class)->name('revenue-sub-categories.create');
-        Route::get('/{revenueSubCategory}/edit', RevenueSubCategoryEdit::class)->name('revenue-sub-categories.edit');
-    });
 
 Route::prefix('account-plans')->middleware(['auth'])->group(function () {
         Route::get('/', AccountPlanIndex::class)->name('account-plans.index');

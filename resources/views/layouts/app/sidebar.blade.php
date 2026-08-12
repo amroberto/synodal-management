@@ -104,25 +104,6 @@
                 >
                     Centros de Custos
                 </flux:navlist.item>
-                
-                <flux:navlist.item
-                    icon="folder"
-                    :href="route('revenue-categories.index')"
-                    :current="request()->routeIs('revenue-categories.*')"
-                    wire:navigate
-                >
-                    Categorias de Receita
-                </flux:navlist.item>
-
-                <flux:navlist.item
-                    icon="folder-open"
-                    :href="route('revenue-sub-categories.index')"
-                    :current="request()->routeIs('revenue-sub-categories.*')"
-                    wire:navigate
-                >
-                    Subcategorias de Receita
-                </flux:navlist.item>
-
                 <flux:navlist.item
                     icon="gift"
                     :href="route('offer-destinations.index')"

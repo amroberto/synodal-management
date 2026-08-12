@@ -10,9 +10,7 @@ use Database\Seeders\CommunitySeeder;
 use Database\Seeders\LeadershipSeeder;
 use Database\Seeders\SectorSeeder;
 use Database\Seeders\AccountPlanSeeder;
-use Database\Seeders\RevenueCategorySeeder;
 use Database\Seeders\SynodSeeder;
-use Database\Seeders\RevenueSubCategorySeeder;
 use Database\Seeders\OfferDestinationSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -35,10 +33,8 @@ class DatabaseSeeder extends Seeder
             SectorSeeder::class,
             CommunitySeeder::class,
             LeadershipSeeder::class,
-            RevenueCategorySeeder::class,
             AccountPlanSeeder::class,
             SynodSeeder::class,
-            RevenueSubCategorySeeder::class,
             OfferDestinationSeeder::class,
         ]);
     }
