@@ -22,7 +22,7 @@ class Index extends Component
         return view('livewire.account-plan.index', [
             'accountPlans' => AccountPlan::query()
                 ->when($this->search, function ($query) {
-                    $query->where('code', 'like', "%{$this->search}%")
+                    $query->where('description', 'like', "%{$this->search}%")
                         ->orWhere('description', 'like', "%{$this->search}%");
                 })
                 ->orderBy('code')

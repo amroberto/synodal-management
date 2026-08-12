@@ -23,44 +23,78 @@ class Form extends Component
 
     public ?int $account_plan_id = null;
 
-    public ?int $offer_plan_id = null;
-
     public ?int $cost_center_id = null;
 
     public bool $active = true;
 
-    /**
-     * Dados para os selects
-     */
-    public $offerDestinations = [];
+    /*
+    |--------------------------------------------------------------------------
+    | Busca do Plano de Contas
+    |--------------------------------------------------------------------------
+    */
 
-    public $accountPlans = [];
+    public string $accountPlanSearch = '';
+
+    public bool $showAccountPlanResults = false;
+
+    /*
+    |--------------------------------------------------------------------------
+    | Dados para os selects
+    |--------------------------------------------------------------------------
+    */
+
+    public $offerDestinations = [];
 
     public $costCenters = [];
 
     public array $instances = [];
 
+    /**
+     * Regras de validação.
+     */
     protected function rules(): array
     {
         return [
 
-            'offer_date' => ['required', 'date'],
+            'offer_date' => [
+                'required',
+                'date',
+            ],
 
-            'liturgical_date' => ['required', 'string', 'max:255'],
+            'liturgical_date' => [
+                'required',
+                'string',
+                'max:255',
+            ],
 
-            'offer_instance' => ['required'],
+            'offer_instance' => [
+                'required',
+            ],
 
-            'offer_destination_id' => ['required', 'exists:offer_destinations,id'],
+            'offer_destination_id' => [
+                'required',
+                'exists:offer_destinations,id',
+            ],
 
-            'account_plan_id' => ['nullable', 'exists:account_plans,id'],
+            'account_plan_id' => [
+                'nullable',
+                'exists:account_plans,id',
+            ],
 
-            'offer_plan_id' => ['nullable', 'exists:offer_plans,id'],
+            'cost_center_id' => [
+                'required',
+                'exists:cost_centers,id',
+            ],
 
-            'active' => ['boolean'],
-
+            'active' => [
+                'boolean',
+            ],
         ];
     }
 
+    /**
+     * Inicialização do formulário.
+     */
     public function mount(?OfferPlan $offerPlan = null): void
     {
         $this->offerPlan = $offerPlan;
@@ -71,21 +105,20 @@ class Form extends Component
         |--------------------------------------------------------------------------
         */
 
-        $this->offerDestinations = OfferDestination::orderBy('name')->get();
+        $this->offerDestinations = OfferDestination::query()
+            ->orderBy('name')
+            ->get();
 
-        $this->accountPlans = AccountPlan::where('active', true)
-            ->orderBy('code')
+        $this->costCenters = CostCenter::query()
+            ->where('active', true)
+            ->orderBy('name')
             ->get();
 
         $this->instances = OfferInstanceEnum::options();
 
-        $this->costCenters = CostCenter::where('active', true)
-            ->orderBy('code')
-            ->get();
-
         /*
         |--------------------------------------------------------------------------
-        | Edit
+        | Edição
         |--------------------------------------------------------------------------
         */
 
@@ -99,15 +132,120 @@ class Form extends Component
 
         $this->offer_instance = $this->offerPlan->offer_instance->value;
 
-        $this->offer_destination_id = $this->offerPlan->offer_destination_id;
+        $this->offer_destination_id =
+            $this->offerPlan->offer_destination_id;
 
-        $this->account_plan_id = $this->offerPlan->account_plan_id;
+        $this->account_plan_id =
+            $this->offerPlan->account_plan_id;
 
-        $this->cost_center_id = $this->offerPlan->cost_center_id;
+        $this->cost_center_id =
+            $this->offerPlan->cost_center_id;
 
         $this->active = $this->offerPlan->active;
+
+        /*
+        |--------------------------------------------------------------------------
+        | Mostra o Plano de Contas selecionado no campo de busca
+        |--------------------------------------------------------------------------
+        */
+
+        if ($this->account_plan_id) {
+
+            $accountPlan = AccountPlan::find($this->account_plan_id);
+
+            if ($accountPlan) {
+
+                $this->accountPlanSearch =
+                    $accountPlan->code . ' - ' . $accountPlan->description;
+            }
+        }
     }
 
+    /**
+     * Filtra os planos de contas conforme o usuário digita.
+     */
+    public function updatedAccountPlanSearch(): void
+    {
+        $this->showAccountPlanResults = true;
+
+        /*
+        |--------------------------------------------------------------------------
+        | Se o usuário apagou o campo, remove a seleção
+        |--------------------------------------------------------------------------
+        */
+
+        if (trim($this->accountPlanSearch) === '') {
+
+            $this->account_plan_id = null;
+
+            return;
+        }
+    }
+
+    /**
+     * Retorna os planos de contas filtrados.
+     */
+    public function getFilteredAccountPlansProperty()
+    {
+        $search = trim($this->accountPlanSearch);
+
+        if ($search === '') {
+
+            return AccountPlan::query()
+                ->where('active', true)
+                ->orderBy('description')
+                ->limit(20)
+                ->get();
+        }
+
+        return AccountPlan::query()
+            ->where('active', true)
+            ->where(function ($query) use ($search) {
+
+                $query
+                    ->where('description', 'like', "%{$search}%")
+                    ->orWhere('code', 'like', "%{$search}%");
+
+            })
+            ->orderBy('description')
+            ->limit(20)
+            ->get();
+    }
+
+    /**
+     * Seleciona um plano de contas.
+     */
+    public function selectAccountPlan(int $id): void
+    {
+        $accountPlan = AccountPlan::find($id);
+
+        if (! $accountPlan) {
+            return;
+        }
+
+        $this->account_plan_id = $accountPlan->id;
+
+        $this->accountPlanSearch =
+            $accountPlan->code . ' - ' . $accountPlan->description;
+
+        $this->showAccountPlanResults = false;
+    }
+
+    /**
+     * Limpa o plano de contas selecionado.
+     */
+    public function clearAccountPlan(): void
+    {
+        $this->account_plan_id = null;
+
+        $this->accountPlanSearch = '';
+
+        $this->showAccountPlanResults = false;
+    }
+
+    /**
+     * Salva o formulário.
+     */
     public function save()
     {
         $this->validate();
@@ -127,8 +265,13 @@ class Form extends Component
             'cost_center_id' => $this->cost_center_id,
 
             'active' => $this->active,
-
         ];
+
+        /*
+        |--------------------------------------------------------------------------
+        | Atualização
+        |--------------------------------------------------------------------------
+        */
 
         if ($this->offerPlan && $this->offerPlan->exists) {
 
@@ -137,6 +280,12 @@ class Form extends Component
             $message = 'Plano de Oferta atualizado com sucesso!';
 
         } else {
+
+            /*
+            |--------------------------------------------------------------------------
+            | Criação
+            |--------------------------------------------------------------------------
+            */
 
             $this->offerPlan = OfferPlan::create($data);
 
@@ -150,6 +299,10 @@ class Form extends Component
 
     public function render()
     {
-        return view('livewire.offer-plan.form');
+        return view('livewire.offer-plan.form', [
+
+            'filteredAccountPlans' =>
+                $this->filteredAccountPlans,
+        ]);
     }
 }
