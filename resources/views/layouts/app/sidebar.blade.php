@@ -104,6 +104,15 @@
                 >
                     Centros de Custos
                 </flux:navlist.item>
+                
+                <flux:navlist.item
+                    icon="banknotes"
+                    :href="route('financial-accounts.index')"
+                    :current="request()->routeIs('financial-accounts.*')"
+                    wire:navigate
+                >
+                    Contas Financeiras
+                </flux:navlist.item>
                 <flux:navlist.item
                     icon="gift"
                     :href="route('offer-destinations.index')"

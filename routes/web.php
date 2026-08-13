@@ -31,6 +31,10 @@ use App\Livewire\OfferPlan\Show as OfferPlanShow;
 use App\Livewire\OfferPlan\Create as OfferPlanCreate;
 use App\Livewire\OfferPlan\Edit as OfferPlanEdit;
 
+use App\Livewire\FinancialAccount\Create as FinancialAccountCreate;
+use App\Livewire\FinancialAccount\Edit as FinancialAccountEdit;
+use App\Livewire\FinancialAccount\Index as FinancialAccountIndex;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -100,5 +104,12 @@ Route::middleware(['auth', 'verified'])->prefix('cost-centers')->group(function 
         Route::get('/create', CostCenterCreate::class)->name('cost-centers.create');
         Route::get('/{costCenter}/edit', CostCenterEdit::class)->name('cost-centers.edit');
     });
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/financial-accounts', FinancialAccountIndex::class)->name('financial-accounts.index');
+    Route::get('/financial-accounts/create', FinancialAccountCreate::class)->name('financial-accounts.create');
+    Route::get('/financial-accounts/{financialAccount}/edit', FinancialAccountEdit::class)->name('financial-accounts.edit');
+});
 
 require __DIR__.'/settings.php';
