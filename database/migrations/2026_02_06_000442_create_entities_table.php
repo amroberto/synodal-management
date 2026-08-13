@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('communities', function (Blueprint $table) {
+        Schema::create('entities', function (Blueprint $table) {
             $table->id();
 
             $table->string('corporate_name');              // Razão social
@@ -31,7 +31,10 @@ return new class extends Migration
             $table->string('city', 100)->nullable();
             $table->char('state', 2)->nullable();          // UF: SP, RJ, etc.
 
-            $table->foreignId('sector_id')->constrained()->onDelete('cascade');
+            $table->foreignId('sector_id')
+                ->nullable()
+                ->constrained('sectors')
+                ->nullOnDelete();
 
             // Contatos
             $table->string('phone', 20)->nullable();       // Com DDD, ex: 1133334444
@@ -48,6 +51,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('communities');
+        Schema::dropIfExists('entities');
     }
 };

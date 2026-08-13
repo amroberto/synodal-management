@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Community;
+use App\Models\Entity;
 use App\Models\Position;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +19,7 @@ class Leadership extends Model
         'name',
         'cpf',
         'rg',
-        'community_id',
+        'entity_id',
         'birthdate',
         'is_active',
         'gender',
@@ -63,17 +64,17 @@ class Leadership extends Model
      * @return BelongsTo
      * 
      */
-    public function community(): BelongsTo
+    public function entity(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Community::class);
+        return $this->belongsTo(Entity::class);
     }
 
     /**
      * Relacionamento inverso: Comunidades que esta liderança faz parte
      */
-    public function communities(): BelongsToMany
+    public function entities(): BelongsToMany
     {
-        return $this->belongsToMany(Community::class, 'community_leaderships')
+        return $this->belongsToMany(Entity::class, 'entity_leaderships')
                     ->withPivot('id', 'position_id')
                     ->withTimestamps();
     }

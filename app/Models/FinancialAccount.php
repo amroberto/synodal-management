@@ -15,11 +15,13 @@ class FinancialAccount extends Model
         'agency',
         'account_number',
         'initial_balance',
+        'current_balance',
         'active',
     ];
 
     protected $casts = [
         'initial_balance' => 'decimal:2',
+        'current_balance' => 'decimal:2',
         'type' => FinancialAccountTypeEnum::class,
         'active' => 'boolean',
     ];

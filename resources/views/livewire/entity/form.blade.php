@@ -47,9 +47,11 @@
                 <flux:select 
                     label="{{ __('Núcleo') }}" 
                     wire:model.defer="sector_id"
-                    placeholder="{{ __('Selecione o Núcleo') }}" 
-                    required
                 >
+                    <flux:select.option value="">
+                        Selecione o Núcleo
+                    </flux:select.option>
+
                     @foreach ($sectors as $sector)
                         <flux:select.option :value="$sector->id">
                             {{ $sector->name }}
@@ -105,15 +107,15 @@
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-gray-200 dark:border-gray-800">
                     <div>
                         <flux:heading size="xl" level="2" class="font-bold text-gray-900 dark:text-white">
-                            {{ __('Lideranças da Comunidade') }}
+                            {{ __('Lideranças') }}
                         </flux:heading>
                         <flux:text size="sm" variant="subtle" class="mt-1">
-                            {{ __('Gerencie os líderes vinculados e seus respectivos cargos nesta comunidade.') }}
+                            {{ __('Gerencie os líderes vinculados e seus respectivos cargos.') }}
                         </flux:text>
                     </div>
 
                     <div class="flex items-center shrink-0">
-                    @if ($community && $community->exists)
+                    @if ($entity && $entity->exists)
                         {{-- Botão Ativo 100% no Padrão Flux UI (Utilizando Variant Primary) --}}
                         <flux:button 
                             type="button" 
@@ -140,7 +142,7 @@
                 </div>
 
                 {{-- Tabela de lideranças vinculadas (Adicionado mt-4 para afastar do novo cabeçalho) --}}
-                @if ($community && $community->exists)
+                @if ($entity && $entity->exists)
                     <div class="mt-4 border border-gray-100 dark:border-gray-800 rounded-lg overflow-hidden shadow-sm">
                         @if(count($current_leaderships) > 0)
                             <flux:table>
@@ -181,7 +183,7 @@
                             </flux:table>
                         @else
                             <flux:text class="text-center italic text-gray-400 py-6 block text-sm bg-white dark:bg-zinc-900">
-                                Nenhuma liderança vinculada a esta comunidade ainda.
+                                Nenhuma liderança vinculada a esta entidade ainda.
                             </flux:text>
                         @endif
                     </div>
@@ -190,7 +192,7 @@
 
             {{-- Ações Globais do Formulário --}}
             <div class="flex justify-end gap-3 mt-6">
-                <flux:button type="button" variant="outline" href="{{ route('communities.index') }}">
+                <flux:button type="button" variant="outline" href="{{ route('entities.index') }}">
                     {{ __('Cancelar') }}
                 </flux:button>
 

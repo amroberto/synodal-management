@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('agency')->nullable();
             $table->string('account_number')->nullable();
             $table->decimal('initial_balance', 15, 2)->default(0);
+            $table->decimal('current_balance', 15, 2)->default(0);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

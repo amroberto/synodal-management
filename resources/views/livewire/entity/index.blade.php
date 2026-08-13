@@ -2,13 +2,13 @@
     <div class="mb-6">
         <flux:breadcrumbs>
             <flux:breadcrumbs.item href="route('dashboard')">Home</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item>Comunidades</flux:breadcrumbs.item>
+            <flux:breadcrumbs.item>Entidades</flux:breadcrumbs.item>
         </flux:breadcrumbs>
     </div>
 
     <div class="relative mb-6 w-full">
         <flux:heading size="xl" level="1">
-            {{ __('Listagem de Comunidades') }}
+            {{ __('Listagem de Entidades') }}
         </flux:heading>
 
         <flux:separator variant="subtle" class="mb-6 my-4" />
@@ -45,9 +45,9 @@
             <flux:button
                 icon="plus"
                 variant="primary"
-                href="{{ route('leaderships.create') }}"
+                href="{{ route('entities.create') }}"
             >
-                {{ __('Criar Nova Comunidade') }}
+                {{ __('Criar Nova Entidade') }}
             </flux:button>
         </div>    
     </div>
@@ -58,6 +58,7 @@
                 <tr class="text-left">
                     <th class="px-4 py-2">{{ __('ID') }}</th>
                     <th class="px-4 py-2">{{ __('Nome Fantasia') }}</th>
+                    <th class="px-4 py-2">{{ __('Tipo') }}</th>
                     <th class="px-4 py-2">{{ __('Núcleo') }}</th>
                     <th class="px-4 py-2">{{ __('Telefone') }}</th>
                     <th class="px-4 py-2">{{ __('Celular') }}</th>
@@ -67,20 +68,21 @@
             </thead>
 
             <tbody>
-                @forelse ($communities as $community)
+                @forelse ($entities as $entity)
                     <tr class="border-t">
-                        <td class="px-4 py-2">{{ $community->id }}</td>
-                        <td class="px-4 py-2">{{ $community->fantasy_name }}</td>
-                        <td class="px-4 py-2">{{ $community->sector->name }}</td>
-                        <td class="px-4 py-2">{{ \App\Helpers\BrazilianFormatter::formatPhoneOrMobile($community->phone) }}</td>
-                        <td class="px-4 py-2">{{ \App\Helpers\BrazilianFormatter::formatPhoneOrMobile($community->mobile) }}</td>
-                        <td class="px-4 py-2">{{ $community->email }}</td>
+                        <td class="px-4 py-2">{{ $entity->id }}</td>
+                        <td class="px-4 py-2">{{ $entity->fantasy_name }}</td>
+                        <td class="px-4 py-2">{{ $entity->unity_type->label() }}</td>
+                        <td class="px-4 py-2">{{ $entity->sector?->name }}</td>
+                        <td class="px-4 py-2">{{ \App\Helpers\BrazilianFormatter::formatPhoneOrMobile($entity->phone) }}</td>
+                        <td class="px-4 py-2">{{ \App\Helpers\BrazilianFormatter::formatPhoneOrMobile($entity->mobile) }}</td>
+                        <td class="px-4 py-2">{{ $entity->email }}</td>
                         <td class="px-4 py-2 space-x-2">
                             <flux:button
                                 size="sm"
                                 icon="pencil"
                                 variant="primary"
-                                href="{{ route('communities.edit', $community->id) }}"
+                                href="{{ route('entities.edit', $entity->id) }}"
                             >
                                 Edit
                             </flux:button>
@@ -89,7 +91,7 @@
                                 size="sm"
                                 icon="trash"
                                 variant="danger"
-                                wire:click="delete({{ $community->id }})"
+                                wire:click="delete({{ $entity->id }})"
                             >
                                 Delete
                             </flux:button>
@@ -98,7 +100,7 @@
                 @empty
                     <tr>
                         <td colspan="6" class="px-4 py-2 text-center text-gray-500">
-                            {{ __('Nenhuma comunidade cadastrada!') }}
+                            {{ __('Nenhuma entidade cadastrada!') }}
                         </td>
                     </tr>
                 @endforelse
@@ -107,19 +109,19 @@
 
         {{-- PAGINAÇÃO --}}
         <div class="mt-4">
-            {{ $communities->links() }}
+            {{ $entities->links() }}
         </div>
 
         {{-- MODAL DELETE --}}
-        <flux:modal name="delete-community" class="min-w-[22rem]">
+        <flux:modal name="delete-financial-entity" class="min-w-[22rem]">
             <div class="space-y-6">
                 <div>
                     <flux:heading size="lg">
-                        Deseja realmente apagar esta comunidade?
+                        Deseja realmente apagar esta entidade?
                     </flux:heading>
 
                     <flux:text class="mt-2">
-                        Você está prestes a excluir esta comunidade.<br>
+                        Você está prestes a excluir esta entidade.<br>
                         Esta ação não poderá ser revertida.
                     </flux:text>
                 </div>
@@ -134,9 +136,9 @@
                     <flux:button
                         type="button"
                         variant="danger"
-                        wire:click="deleteCommunity"
+                        wire:click="deleteFinancialEntity"
                     >
-                        Apagar Comunidade
+                        Apagar Entidade
                     </flux:button>
                 </div>
             </div>

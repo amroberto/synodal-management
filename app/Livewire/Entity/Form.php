@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire\Community;
+namespace App\Livewire\Entity;
 
 use App\Enums\UnityTypeEnum;
 use App\Helpers\BrazilianFormatter;
-use App\Models\Community;
-use App\Models\Leadership; 
-use App\Models\Position;   
+use App\Models\Entity;
+use App\Models\Leadership;
+use App\Models\Position;
 use App\Models\Sector;
 use App\Traits\GetAddressByCepTrait;
 use Illuminate\Support\Facades\DB;
@@ -19,11 +19,11 @@ class Form extends Component
 {
     use GetAddressByCepTrait;
 
-    public ?Community $community = null;
+    public ?Entity $entity = null;
 
-    // Campos do formulário principal da Comunidade
+    // Campos do formulário principal da Entidade
     public $corporate_name = '';
-    public $fantasy_name = '';   
+    public $fantasy_name = '';
     public string $unity_type = '';
     public $cnpj = '';
     public $cep = '';
@@ -33,7 +33,7 @@ class Form extends Component
     public $neighborhood = '';
     public $city = '';
     public $state = '';
-    public $sector_id = '';
+    public ?int $sector_id = null;
     public $phone = '';
     public $mobile = '';
     public $email = '';
@@ -42,7 +42,7 @@ class Form extends Component
     // Propriedades para o gerenciamento das Lideranças e do Modal
     public $selected_leadership_id = '';
     public $selected_position_id = '';
-    public $editing_pivot_id = null; 
+    public $editing_pivot_id = null;
     public $current_leaderships = [];
 
     protected function rules()
@@ -53,7 +53,7 @@ class Form extends Component
             'cnpj'           => [
                 'nullable',
                 'size:14',
-                Rule::unique('communities', 'cnpj')->ignore($this->community?->id),
+                Rule::unique('entities', 'cnpj')->ignore($this->entity?->id),
             ],
             'cep'            => 'nullable|size:8',
             'street'         => 'required|string|max:255',
@@ -62,7 +62,7 @@ class Form extends Component
             'neighborhood'   => 'required|string|max:100',
             'city'           => 'required|string|max:100',
             'state'          => 'nullable|size:2',
-            'sector_id'      => 'required|exists:sectors,id',
+            'sector_id'      => 'nullable|exists:sectors,id',
             'unity_type'     => 'required|in:' . implode(',', UnityTypeEnum::getValues()),
             'phone'          => 'nullable|string|max:20',
             'mobile'         => 'nullable|string|max:20',
@@ -77,31 +77,30 @@ class Form extends Component
             'street.required'         => 'O campo Rua é obrigatório.',
             'neighborhood.required'   => 'O campo Bairro é obrigatório.',
             'city.required'           => 'O campo Cidade é obrigatório.',
-            'sector_id.required'      => 'O núcleo é obrigatório!',
         ];
     }
     
-    public function mount(?Community $community = null): void
+    public function mount(?Entity $entity = null): void
     {
-        $this->community = $community;
+        $this->entity = $entity;
 
-        if ($this->community?->exists) {
-            $this->corporate_name  = $this->community->corporate_name;
-            $this->fantasy_name    = $this->community->fantasy_name;
-            $this->unity_type      = $this->community->unity_type?->value ?? '';
-            $this->cnpj            = $this->community->cnpj;
-            $this->cep             = $this->community->cep;
-            $this->street          = $this->community->street;
-            $this->number          = $this->community->number;
-            $this->complement      = $this->community->complement;
-            $this->neighborhood    = $this->community->neighborhood;
-            $this->city            = $this->community->city;
-            $this->state           = $this->community->state;
-            $this->sector_id       = $this->community->sector_id;
-            $this->phone           = $this->community->phone;
-            $this->mobile          = $this->community->mobile;
-            $this->email           = $this->community->email;
-            $this->website         = $this->community->website;
+        if ($this->entity?->exists) {
+            $this->corporate_name  = $this->entity->corporate_name;
+            $this->fantasy_name    = $this->entity->fantasy_name;
+            $this->unity_type      = $this->entity->unity_type?->value ?? '';
+            $this->cnpj            = $this->entity->cnpj;
+            $this->cep             = $this->entity->cep;
+            $this->street          = $this->entity->street;
+            $this->number          = $this->entity->number;
+            $this->complement      = $this->entity->complement;
+            $this->neighborhood    = $this->entity->neighborhood;
+            $this->city            = $this->entity->city;
+            $this->state           = $this->entity->state;
+            $this->sector_id       = $this->entity->sector_id;
+            $this->phone           = $this->entity->phone;
+            $this->mobile          = $this->entity->mobile;
+            $this->email           = $this->entity->email;
+            $this->website         = $this->entity->website;
 
             $this->loadLeaderships();
         }
@@ -109,17 +108,17 @@ class Form extends Component
 
     public function loadLeaderships()
     {
-        if ($this->community?->exists) {
-            $this->current_leaderships = DB::table('community_leaderships')
-                ->join('leaderships', 'community_leaderships.leadership_id', '=', 'leaderships.id')
-                ->join('positions', 'community_leaderships.position_id', '=', 'positions.id')
-                ->where('community_leaderships.community_id', $this->community->id)
+        if ($this->entity?->exists) {
+            $this->current_leaderships = DB::table('entity_leaderships')
+                ->join('leaderships', 'entity_leaderships.leadership_id', '=', 'leaderships.id')
+                ->join('positions', 'entity_leaderships.position_id', '=', 'positions.id')
+                ->where('entity_leaderships.entity_id', $this->entity->id)
                 ->select(
-                    'community_leaderships.id as pivot_id',
+                    'entity_leaderships.id as pivot_id',
                     'leaderships.name as leader_name',
                     'positions.name as position_name'
                 )
-                ->orderBy('community_leaderships.position_id', 'asc')
+                ->orderBy('entity_leaderships.position_id', 'asc')
                 ->get()->toArray();
         }
     }
@@ -139,7 +138,7 @@ class Form extends Component
     {
         $this->editing_pivot_id = $pivotId;
 
-        $relation = DB::table('community_leaderships')
+        $relation = DB::table('entity_leaderships')
             ->where('id', $pivotId)
             ->first();
 
@@ -163,7 +162,7 @@ class Form extends Component
         ]);
 
         if ($this->editing_pivot_id) {
-            DB::table('community_leaderships')
+            DB::table('entity_leaderships')
                 ->where('id', $this->editing_pivot_id)
                 ->update([
                     'leadership_id' => $this->selected_leadership_id,
@@ -173,7 +172,7 @@ class Form extends Component
             
             $headingMessage = 'Vínculo de liderança atualizado!';
         } else {
-            $this->community->leaderships()->attach($this->selected_leadership_id, [
+            $this->entity->leaderships()->attach($this->selected_leadership_id, [
                 'position_id' => $this->selected_position_id
             ]);
 
@@ -191,10 +190,10 @@ class Form extends Component
 
     public function removeLeadership($pivotId)
     {
-        DB::table('community_leaderships')->where('id', $pivotId)->delete();
+        DB::table('entity_leaderships')->where('id', $pivotId)->delete();
         $this->loadLeaderships();
         
-        $this->dispatch('toast', variant: 'success', heading: 'Liderança removida da comunidade.');
+        $this->dispatch('toast', variant: 'success', heading: 'Liderança removida da entidade.');
     }
 
     #[Computed]
@@ -241,36 +240,36 @@ class Form extends Component
             'fantasy_name'   => $this->fantasy_name,
             'cnpj'           => BrazilianFormatter::clean($this->cnpj),
             'cep'            => $this->cep,
-            'unity_type'     => $this->unity_type,          
+            'unity_type'     => $this->unity_type,
             'street'         => $this->street,
             'number'         => $this->number,
             'complement'     => $this->complement,
             'neighborhood'   => $this->neighborhood,
             'city'           => $this->city,
             'state'          => $this->state,
-            'sector_id'      => $this->sector_id,
+            'sector_id'      => $this->sector_id ?: null,
             'phone'          => $this->phone,
             'mobile'         => $this->mobile,
             'email'          => $this->email,
             'website'        => $this->website,
         ];
 
-        if ($this->community && $this->community->exists) {
-            $this->community->update($data);
-            $message = 'Comunidade atualizada com Sucesso';
+        if ($this->entity && $this->entity->exists) {
+            $this->entity->update($data);
+            $message = 'Entidade atualizada com sucesso';
         } else {
-            $this->community = Community::create($data);
-            $message = 'Comunidade criada com sucesso!';
+            $this->entity = Entity::create($data);
+            $message = 'Entidade criada com sucesso!';
         }
 
         session()->flash('message', $message);
-        return redirect()->route('communities.index');
+        return redirect()->route('entities.index');
     }
 
     public function render()
     {
         $sectors = Sector::all();
-        return view('livewire.community.form', [
+        return view('livewire.entity.form', [
             'sectors' => $sectors
         ]);
     }

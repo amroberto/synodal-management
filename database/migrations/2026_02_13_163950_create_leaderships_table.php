@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(true);
             $table->date('birthdate');
             $table->enum('gender', GenderEnum::values());
-            $table->foreignId('community_id')->constrained()->onDelete('cascade');
+            $table->foreignId('entity_id')->constrained()->onDelete('cascade');
             $table->string('mobile')->nullable();
             $table->string('business_phone')->nullable();
             $table->string('phone')->nullable();

@@ -13,9 +13,9 @@ use App\Livewire\Synod\Edit as SynodEdit;
 use App\Livewire\Sector\Edit as SectorEdit;
 use App\Livewire\Sector\Index as SectorIndex;
 use App\Livewire\Sector\Create as SectorCreate;
-use App\Livewire\Community\Edit as CommunityEdit;
-use App\Livewire\Community\Index as CommunityIndex;
-use App\Livewire\Community\Create as CommunityCreate;
+use App\Livewire\Entity\Edit as EntityEdit;
+use App\Livewire\Entity\Index as EntityIndex;
+use App\Livewire\Entity\Create as EntityCreate;
 use App\Livewire\Leadership\Edit as LeadershipEdit;
 use App\Livewire\Leadership\Index as LeadershipIndex;
 use App\Livewire\Leadership\Create as LeadershipCreate;
@@ -59,11 +59,11 @@ Route::middleware(['auth', 'verified'])->prefix('sectors')->group(function () {
 
 });
 
-// Route crud Communities
-Route::middleware(['auth', 'verified'])->prefix('communities')->group(function () {
-    Route::get('/', CommunityIndex::class)->name('communities.index');
-    Route::get('/create', CommunityCreate::class)->name('communities.create');
-    Route::get('/{community}/edit', CommunityEdit::class)->name('communities.edit');
+// Route crud Entities
+Route::middleware(['auth', 'verified'])->prefix('entities')->group(function () {
+    Route::get('/', EntityIndex::class)->name('entities.index');
+    Route::get('/create', EntityCreate::class)->name('entities.create');
+    Route::get('/{entity}/edit', EntityEdit::class) ->name('entities.edit');
 });
 
 // Route crud Leaderships

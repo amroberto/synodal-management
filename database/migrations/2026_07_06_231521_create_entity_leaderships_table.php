@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('community_leaderships', function (Blueprint $table) {
+        Schema::create('entity_leaderships', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('community_id')->constrained()->onDelete('cascade');
+            $table->foreignId('entity_id')->constrained()->onDelete('cascade');
             $table->foreignId('position_id')->constrained()->onDelete('cascade');
             $table->foreignId('leadership_id')->constrained()->onDelete('cascade');
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('community_leaderships');
+        Schema::dropIfExists('entity_leaderships');
     }
 };

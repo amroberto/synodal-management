@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Community extends Model
+class Entity extends Model
 {
     /** @use HasFactory<\Database\Factories\CommunityFactory> */
     use HasFactory;
@@ -45,13 +45,13 @@ class Community extends Model
      */
     public function leaderships(): BelongsToMany
     {
-        return $this->belongsToMany(Leadership::class, 'community_leaderships')
+        return $this->belongsToMany(Leadership::class, 'entity_leaderships')
                     ->withPivot('id', 'position_id') // Traz o ID da tabela pivô e o cargo junto
                     ->withTimestamps();
     }
 
     /**
-     * [Description for community]
+     * [Description for entity]
      *
      * @return BelongsTo
      * 

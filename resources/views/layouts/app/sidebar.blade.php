@@ -74,11 +74,11 @@
 
                 <flux:navlist.item
                     icon="building-library"
-                    :href="route('communities.index')"
-                    :current="request()->routeIs('communities.*')"
+                    :href="route('entities.index')"
+                    :current="request()->routeIs('entities.*')"
                     wire:navigate
                 >
-                    Comunidades
+                    Entidades
                 </flux:navlist.item>
 
                 <flux:navlist.item

@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Database\Seeders\PositionSeeder;
-use Database\Seeders\CommunitySeeder;
+use Database\Seeders\EntitySeeder;
 use Database\Seeders\LeadershipSeeder;
 use Database\Seeders\SectorSeeder;
 use Database\Seeders\AccountPlanSeeder;
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PositionSeeder::class,
             SectorSeeder::class,
-            CommunitySeeder::class,
+            EntitySeeder::class,
             LeadershipSeeder::class,
             AccountPlanSeeder::class,
             SynodSeeder::class,
